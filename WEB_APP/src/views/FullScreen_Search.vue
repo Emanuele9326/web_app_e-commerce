@@ -42,7 +42,7 @@ function filteredList(input) {
 
 function detailProduct(category, id_product) {
   productStore.getCategories(category);
-  router.push({ name: "ProductView", params: { id: id_product } });
+  router.push({ name: "ProductView", params: {category: category, id: id_product } });
 }
 </script>
 
