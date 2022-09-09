@@ -31,9 +31,6 @@ Si suppone che un supermarket "L'Angolo della Bontà"  vuole aprire un piccolo e
 - [Pinia-plugin-persistedstate] (https://github.com/prazdevs/pinia-plugin-persistedstate)
 - [Bootstrap] (https://getbootstrap.com/)
 
-Esegue delle chiamate all'API RESTfull presente in questo repository nella folder API
-- [API] ('../API')
-
 <!--Descrizione-->
 
 ## Descrizione
@@ -62,18 +59,23 @@ Si è stabilito che sè il cliente acquista più di 3 prodotti, riceve uno scont
 ### Download e testare app in locale
 
 - Sul proprio dispositivo è necessario installare: 
-   - Nodo.js
+   - Nodo.js (version minima per il buon funzionamento dell'app : v 16.13.0)
    - gestore di pachetti npm. 
 
 L'app può essere testata in locale eseguendo i seguenti passaggi:
 
+- E' necessario aver l'API presente in questo repository nella folder API correttamente configurata e avviata per il funzionamento dell'app .
+(Seguire il README relativo all'API)
+
 - Clonare il repository del progetto in locale 
 
 - Aprire la folder del progetto con un terminale, ed eseguire il comando "npm install".
+- Rinominare il file ".env.example " in ".env"  alla variabile VITE_BASE_URL attribuire l'url che punta all'API.
+![](../IMG_README/vite_base_url.png)
 
 - Testare l'app in locale tramite il comando "npm run dev".
 ##
-![](/src/assets/img/run.png)
+![](../IMG_README/run.png)
 
 ## Licenza
 
