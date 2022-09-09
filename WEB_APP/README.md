@@ -22,7 +22,7 @@
 
 ## Informazioni sul progetto
 
-L'azienda "L'Angolo della Bontà"  vuole aprire un piccolo e-commerce totalmente mobile. Per sperimentare questa nuova possibilità di business chiede di sviluppare una  web app dall’esperienza minimale.
+Si suppone che un supermarket "L'Angolo della Bontà"  vuole aprire un piccolo e-commerce totalmente mobile. Per sperimentare questa nuova possibilità di business chiede di sviluppare una  web app dall’esperienza minimale.
 
 #### <h3>Costruito con:</h3>
 
@@ -30,7 +30,9 @@ L'azienda "L'Angolo della Bontà"  vuole aprire un piccolo e-commerce totalmente
 - [Pinia] (https://pinia.vuejs.org/)
 - [Pinia-plugin-persistedstate] (https://github.com/prazdevs/pinia-plugin-persistedstate)
 - [Bootstrap] (https://getbootstrap.com/)
-- [API] (http://127.0.0.1:8000 , API RESTfull presente in questo repository)
+
+Esegue delle chiamate all'API RESTfull presente in questo repository nella folder API
+- [API] ('../API')
 
 <!--Descrizione-->
 
@@ -42,14 +44,19 @@ L’applicazione web, è un’app mobile first creata in Vue.js, composta da qua
 
  - Vista categorie  (HomeView.vue)
  - Vista Lista prodotti in base alla categoria scelta (ProductList.vue)
- - Pagina prodotto (ProductPage.vue)
+ - Vista detaglio prodotto (ProductView.vue)
  - Carrello (CartProduct.vue)
 
-L' applicazione esegue delle chiamate ad un'API RESTful appositamente sviluppata che implementa un sistema di login/logouth , registarzione dell'utente , recupero password. 
+L' applicazione esegue delle chiamate ad un'API RESTful appositamente sviluppata che gestisce:
+ -  un sistema di login/logouth , registarzione dell'utente , e recupero password;
+ - un sistema per il recupero dei prodotti dal DB in base alla categoria, e il recupero di eventuali prodotti presenti nel carrello per ogni singolo utente registrato.
 
-- L'utente non autenticato puo navigare 
-
-Sè il cliente acquista più di 3 prodotti, riceve uno sconto del 10% sul totale.
+L'utente non autenticato puo navigare fino alla pagina dettaglio prodotto per aggiungere un prodotto nel carrello prima si deve login/registrazione .
+</br>
+</br>
+Si è stabilito che sè il cliente acquista più di 3 prodotti, riceve uno sconto del 10% sul totale.
+</br>
+</br>
 ![](/src/assets/img/imgdescr.png) 
 
 ### Download e testare app in locale

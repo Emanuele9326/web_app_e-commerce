@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { AuthServices } from '../stores/AuthService'
 import ProductList from '../views/ProductList.vue'
-import ProductPage from '../views/ProductPage.vue'
+import ProductView from '../views/ProductView.vue'
 import CartProduct from '../views/CartProduct.vue'
 import FullScreen_Search from '../views/FullScreen_Search.vue'
 import HomeView from '../views/HomeView.vue'
@@ -34,9 +34,9 @@ const router = createRouter({
             }
         },
         {
-            path: '/productPage/:category/:id',
-            name: 'ProductPage',
-            component: ProductPage,
+            path: '/productView/:category/:id',
+            name: 'ProductView',
+            component: ProductView,
             meta: {
                 requiresAuth: false
 

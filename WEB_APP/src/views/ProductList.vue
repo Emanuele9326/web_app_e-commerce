@@ -52,7 +52,7 @@ productStore.itemsPage(numberblock[0],0)
             
               <router-link
                 :to="{
-                  name: 'ProductPage',
+                  name: 'ProductView',
                   params: { id: item.id },
                 }"
               >
