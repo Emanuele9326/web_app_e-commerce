@@ -91,33 +91,40 @@ In questo caso  laravel Sanctum si è utilizzato per implementare un sistema di 
 In questo modo si vanno in automatico ad installare tutte le dipendenze e le librerie di cui necessita l'applicazione.
 
 - Una volta avviati Apache e MySql dall'interfaccia di XAMPP cliccare sul pulsante Admin. In questo modo si viene reindirizzati su phpMyAdmin
-che consente di amministrare un database MySQL o MariaDB tramite un qualsiasi browser.
-![](../IMG_README/img6.png)
+che consente di amministrare un database MySQL o MariaDB tramite un qualsiasi browser. 
 - Attraverso phpMyAdmin creare un nuovo database.
 - Rinominare il file ".env.example" in ".env". 
 - Aprire il file ".env" e impostare i valori di connessione al database .
+<br>
 ![](../IMG_README/db-conf.png)
-- Dopo aver configurato il database, è possibile eseguire le migrations del database dell'applicazione , che creranno le tabelle del database dell'applicazione: 
+<br>
+- Dopo aver configurato il database, è possibile eseguire le migrations del database dell'applicazione.
+<br>
+Le migrazioni sono come il controllo della versione per 
+il  database creato: 
    - per eseguire le migrations eseguire il comando: <b>php artisan migrate</b>;
-   - dopo eseguire il 'seeding' del database , cioè si vanno a popolare la tabella products, product_categories, e users .
-   Nella tabella 'users' viene inserito un solo utente per eseguire il test dell'API con  le seguenti credienzali: 
-     - email: giacomorossi@gmail.com;
-     - password: Test2022? 
+   - dopo eseguire il 'seeding' del database.
+     - Eseguire il comando: <b>php artisan db:seed</b> 
+     </br>Con il Seeding si vanno a popolare la tabella products, product_categories, e users .
+     Nella tabella 'users' viene inserito un solo utente, con  le seguenti credienzali: 
+       - email: giacomorossi@gmail.com;
+       - password: Test2022? 
   - Impostare nel file .env le variabili:
      - SESSION_DOMAIN,
      - SANCTUM_STATEFUL_DOMAINS.
      <br>
      (SESSION_DOMAIN:Questo determinerà a quali domini è disponibile il cookie nell'applicazione)
+     </br>
      (SANCTUM_STATEFUL_DOMAINS: Domini con stato.
       Le richieste dai seguenti domini/host riceverà cookie di autenticazione API con stato. 
       In genere, questi dovrebbero includere il tuo dominio locale
-      e domini di produzione che accedono alla tua API tramite una SPA frontend.)<br>
-    N.B : API e Single page application (SPA) devono condividere lo stesso dominio di primo livello;<br>
+      e domini di produzione che accedono alla tua API tramite una SPA frontend.)<br><br>
+    <b>N.B : API e Single page application (SPA) devono condividere lo stesso dominio di primo livello;<br>
     PER ESEMPIO:
        - L'API è raggiungibile in locale  su http://127.0.0.1:8000;
        - Invece la web app e raggiungibile su http://127.0.0.1:5173/;<br>
       Quindi impostare SESSION_DOMAIN= 127.0.0.1 e in SANCTUM_STATEFUL_DOMAINS = 127.0.0.1:5173 
-
+</b>
 
 - L'API gestisce anche il recupero della password, questo avviene attraverso l'invio di una email all'utente interessato. Per questo motivo impostare nel file .env le variabili di ambiente per l'invio dell'email.
 <br>
@@ -142,11 +149,14 @@ Al seguente link: <a>https://mailtrap.io/signin</a> si puo accedere o registrare
 Dopo aver impostato le varie variabili nel file .env eseguire i comandi:
    - php artisan cache:clear;
 
-- Ritornare al prompt dei comandi ed eseguire il comando: "php artisan key:generate".
+- Ritornare al prompt dei comandi ed eseguire il comando: <b>"php artisan key: generate"</b>.
+</br>
 "php artisan key:generate" è un comando che imposta il valore APP_KEY nel tuo".env" file.
 - Ora si puo avviare l'API attraverso il comando: "php artisan serve" 
 
 ## Licenza
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
 
