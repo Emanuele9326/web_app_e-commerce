@@ -24,7 +24,9 @@
 
 ## Informazioni sul progetto
 
-Si è sviluppata un API RESTful per una webapp di un e_commerce di prodotti tipici italiani. L'API  gestisce:
+Si è sviluppata un API RESTful per una Web app di un e-commerce. 
+</br>
+L'API  gestisce:
 <ul>
 <li> login/logouht dell'utente,</li>
 <li> registrazione dell'utente,</li> 
@@ -58,18 +60,18 @@ Si è sviluppata un API RESTful per una webapp di un e_commerce di prodotti tipi
 ## Descrizione
 
 ### Sviluppo
-L' API è stata sviluppata con laravel 9 .
+- L' API è stata sviluppata con laravel 9 .
 
-Pachetti laravel utilizzati:
--  Sanctum
-- Fortify
+- Pachetti laravel utilizzati:
+   -  Sanctum
+   - Fortify
 
-<strong>Laravel Sanctum</strong> è un pacchetto Laravel semplice e leggero per implementare un sistema di autenticazione API REST per applicazioni mobili, applicazioni a pagina singola (SPA) e API basate su token.
-
+<b>Laravel Sanctum</b> è un pacchetto Laravel semplice e leggero per implementare un sistema di autenticazione API REST per applicazioni mobili, applicazioni a pagina singola (SPA) e API basate su token.
+<br>
 In questo caso  laravel Sanctum si è utilizzato per implementare un sistema di autenticazione API Rest per apllicazioni SPA.
 
-
-<strong>Laravel Fortify</strong> è un'implementazione di backend di autenticazione indipendente dal frontend per Laravel. Fortify registra i percorsi e i controller necessari per implementare tutte le funzionalità di autenticazione di Laravel, inclusi accesso, registrazione, reimpostazione della password, verifica e-mail e altro ancora.
+<br>
+<b>Laravel Fortify</b> è un'implementazione di backend di autenticazione indipendente dal frontend per Laravel. Fortify registra i percorsi e i controller necessari per implementare tutte le funzionalità di autenticazione di Laravel, inclusi accesso, registrazione, reimpostazione della password, verifica e-mail e altro ancora.
 
 
 
@@ -77,28 +79,26 @@ In questo caso  laravel Sanctum si è utilizzato per implementare un sistema di 
 
 - Sul proprio dispositivo è necessario installare: 
   
-   - un ambiente di sviluppo web con una versione di PHP maggiore o uguale ^ 8.0.2.
+   - un ambiente di sviluppo web con una versione minima di PHP v ^ 8.0.2.
 
    - [Composer] gestore di pacchetti a livello applicativo per il linguaggio di programmazione PHP (https://getcomposer.org/download/) 
    
-- Scaricare il Repository: 
+- Scaricare il Repository.
 
-   ![](img-README/img4.png ( inserire dopo ) )
 
-- Sè si utilizza XAMPP come ambiente di sviluppo la cartella del repository appena scaricato deve essere posizionata <b>" c:/xampp/htdocs"</b> directory, in quanto per impostazione predefinita i file vengono serviti da tale directory.
-- Aprire la cartella del repository attraverso il prompt dei comandi ed eseguire il comando "composer install".
+- Sè si utilizza XAMPP come ambiente di sviluppo si consiglia di posizionare la folder del  repository, che include le cartelle WEB_APP e API ,nella directory <b>" c:/xampp/htdocs"</b> , in quanto per impostazione predefinita i file vengono serviti da tale directory.
+- Aprire la folder API attraverso il prompt dei comandi ed eseguire il comando "composer install".
 In questo modo si vanno in automatico ad installare tutte le dipendenze e le librerie di cui necessita l'applicazione.
-- Dall'interfaccia di XAMPP avviare Apache e MySql.
-  ![](img-README/img5.png)
-- Sempre dall'interfaccia di XAMPP cliccare sul pulsante Admin. In questo modo si viene reindirizzati su phpMyAdmin
+
+- Una volta avviati Apache e MySql dall'interfaccia di XAMPP cliccare sul pulsante Admin. In questo modo si viene reindirizzati su phpMyAdmin
 che consente di amministrare un database MySQL o MariaDB tramite un qualsiasi browser.
-![](img-README/img6.png)
+![](../IMG_README/img6.png)
 - Attraverso phpMyAdmin creare un nuovo database.
 - Rinominare il file ".env.example" in ".env". 
 - Aprire il file ".env" e impostare i valori di connessione al database .
-(Immagine);
-- Dopo aver configurato il database, è possibile eseguire le migrations del database dell'applicazione , che creeranno le tabelle del database dell'applicazione: 
-   - per eseguire le migrations eseguire il comando: php artisan migrate ;
+![](../IMG_README/db-conf.png)
+- Dopo aver configurato il database, è possibile eseguire le migrations del database dell'applicazione , che creranno le tabelle del database dell'applicazione: 
+   - per eseguire le migrations eseguire il comando: <b>php artisan migrate</b>;
    - dopo eseguire il 'seeding' del database , cioè si vanno a popolare la tabella products, product_categories, e users .
    Nella tabella 'users' viene inserito un solo utente per eseguire il test dell'API con  le seguenti credienzali: 
      - email: giacomorossi@gmail.com;
@@ -106,7 +106,7 @@ che consente di amministrare un database MySQL o MariaDB tramite un qualsiasi br
   - Impostare nel file .env le variabili:
      - SESSION_DOMAIN,
      - SANCTUM_STATEFUL_DOMAINS.
-     
+     <br>
      (SESSION_DOMAIN:Questo determinerà a quali domini è disponibile il cookie nell'applicazione)
      (SANCTUM_STATEFUL_DOMAINS: Domini con stato.
       Le richieste dai seguenti domini/host riceverà cookie di autenticazione API con stato. 
