@@ -1,0 +1,26 @@
+//main: main.scss
+
+/* Color Theme Swatches in Hex */
+
+$white:#fff;
+$My-Color-Theme-1-hex: #3B3310;
+$My-Color-Theme-2-hex: #C6B671;
+$My-Color-Theme-3-hex: #BBA332;
+$My-Color-Theme-4-hex: #3B3621;
+$My-Color-Theme-5-hex: #877524;
+
+/* Color Theme Swatches in RGBA */
+
+$My-Color-Theme-1-rgba: rgba(59, 51, 16, 1);
+$My-Color-Theme-2-rgba: rgba(198, 182, 113, 1);
+$My-Color-Theme-2-1-rgba: rgba(198, 182, 113, 0.2);
+$My-Color-Theme-2-v2-rgba: rgba(198, 182, 113, 0.43);
+$My-Color-Theme-3-rgba: rgba(187, 163, 50, 1);
+$My-Color-Theme-4-rgba: rgba(59, 54, 33, 1);
+$My-Color-Theme-5-rgba: rgba(135, 117, 36, 1);
+
+/****/
+
+$primary: $My-Color-Theme-5-hex;
+$secondary: $My-Color-Theme-1-hex;
+$tertiary:$My-Color-Theme-2-rgba;

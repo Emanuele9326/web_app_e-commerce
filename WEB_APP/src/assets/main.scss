@@ -1,0 +1,23 @@
+@import "./scss/varscolor";
+
+/**** function ***/
+
+@function cart_font_size_1() {
+    $font-size: calc(2em + 1vw);
+    @return $font-size;
+}
+
+@function cart_font_size_3() {
+    $font-size: calc(0.9em + .5vw);
+    @return $font-size;
+}
+
+@function cart_font_size_4() {
+    $font-size: calc(0.8em + .4vw);
+    @return $font-size;
+}
+
+@function cart_font_size_6() {
+    $font-size: calc(0.7em + .3vw);
+    @return $font-size;
+}
