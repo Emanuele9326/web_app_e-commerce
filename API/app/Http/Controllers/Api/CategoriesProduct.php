@@ -36,7 +36,7 @@ class CategoriesProduct extends Controller
       */
 
       function getProductsList(Request $request,$category){
-             $list=Product::join('product_categories', 'products.category_id','=','product_categories.id')
+             $list=Product::join('product_categories', 'products.product_category_id','=','product_categories.id')
              ->where('product_categories.category','=',$category)
              ->select('products.id','products.name','products.image','products.price','products.quantity','product_categories.unit_of_measure','products.description')
              ->get();
