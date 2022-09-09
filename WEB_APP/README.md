@@ -51,13 +51,13 @@ L' applicazione esegue delle chiamate ad un'API RESTful appositamente sviluppata
  -  un sistema di login/logouth , registarzione dell'utente , e recupero password;
  - un sistema per il recupero dei prodotti dal DB in base alla categoria, e il recupero di eventuali prodotti presenti nel carrello per ogni singolo utente registrato.
 
-L'utente non autenticato puo navigare fino alla pagina dettaglio prodotto per aggiungere un prodotto nel carrello prima si deve login/registrazione .
+L'utente non autenticato puo navigare fino alla pagina dettaglio prodotto per aggiungere un prodotto nel carrello prima deve eseguire il  login/registrazione .
 </br>
 </br>
 Si è stabilito che sè il cliente acquista più di 3 prodotti, riceve uno sconto del 10% sul totale.
 </br>
 </br>
-![](/src/assets/img/imgdescr.png) 
+![](../IMG_README/imgdescr.png) 
 
 ### Download e testare app in locale
 
