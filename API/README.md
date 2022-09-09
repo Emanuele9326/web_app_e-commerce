@@ -23,9 +23,6 @@
 <!-- Informazioni sul progetto-->
 
 ## Informazioni sul progetto
-
-Si è sviluppata un API RESTful per una Web app di un e-commerce. 
-</br>
 L'API  gestisce:
 <ul>
 <li> login/logouht dell'utente,</li>
@@ -157,6 +154,8 @@ Dopo aver impostato le varie variabili nel file .env eseguire i comandi:
 ## Licenza
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
 
 
 
