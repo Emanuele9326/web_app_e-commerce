@@ -52,6 +52,7 @@ L'utente non autenticato puo navigare fino alla pagina dettaglio prodotto per ag
 - Si è stabilito che sè il cliente acquista più di 3 prodotti, riceve uno sconto del 10% sul totale.
 </br>
 </br>
+
 ![](../IMG_README/imgdescr.png) 
 
 ### Download e testare app in locale
