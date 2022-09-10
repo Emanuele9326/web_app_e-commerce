@@ -75,7 +75,8 @@ L'app può essere testata in locale eseguendo i seguenti passaggi:
 - Testare l'app in locale tramite il comando "npm run dev".
 </br>
 (<b>L'API deve essere già stata precedentemente avviata</b>)
-##
+
+
 ![](../IMG_README/run.png)
 
 ## Licenza
