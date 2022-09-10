@@ -56,7 +56,7 @@ E' stata realizzata un'APIRESTful che gestisce:
 ## Descrizione
 
 ### Sviluppo
-- L' API è stata sviluppata con laravel 9 .
+- L' API è stata sviluppata con Laravel 9 .
 
 - Pachetti laravel utilizzati:
    - Sanctum
@@ -90,11 +90,13 @@ In questo modo si vanno in automatico ad installare tutte le dipendenze e le lib
 - Una volta avviati Apache e MySql, attraverso un client MySQL (per esempio phpMyAdmin) creare un nuovo database.
 - Nella folder dell'API rinominare il file ".env.example" in ".env". 
 - Aprire il file ".env" e impostare i valori di connessione al database .
-<br>
+</br>
 ![](../IMG_README/db-conf.png)
-<br>
+</br>
+
 - Ora è possibile eseguire le migrations del database dell'applicazione.
-<br>
+</br>
+
 - Per le migrazioni si utilizza il tool fornito da Laravel:
 
   - Attraverso il prompt dei comandi eseguire il comando: <b>php artisan migrate</b>;
@@ -118,7 +120,8 @@ In questo modo si vanno in automatico ad installare tutte le dipendenze e le lib
       </br></br>
     <b>N.B</b>: API e Single page application (SPA) devono condividere lo stesso dominio di primo livello;
     </br></br>
-    PER ESEMPIO:
+    <b>PER ESEMPIO:</b>:
+    </br>
        - L'API è raggiungibile in locale  su http://127.0.0.1:8000;
        - Invece la web app e raggiungibile su http://127.0.0.1:5173/;
        </br>
@@ -157,6 +160,8 @@ Dopo aver impostato le variabili nel file .env ritornare al prompt dei comandi e
 <b>php artisan key:generate</b> è un comando che imposta il valore APP_KEY nel tuo".env" file.
 
 - Ora si puo avviare l'API attraverso il comando: <b>php artisan serve</b> 
+
+![](../IMG_README/serve_api.png)
 
 ## Licenza
 
