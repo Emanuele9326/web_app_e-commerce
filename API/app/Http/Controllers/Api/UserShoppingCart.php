@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CartItem;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\UserCart;
-use GuzzleHttp\Psr7\Response;
+
 
 class UserShoppingCart extends Controller
 {
@@ -55,10 +54,6 @@ class UserShoppingCart extends Controller
         $payload= array_values($request->all());
        
        
-    
-     //dd($payload);
-
-
         CartItem::upsert(
 
             $payload,
