@@ -91,16 +91,11 @@ In questo modo si vanno in automatico ad installare tutte le dipendenze e le lib
 - Nella folder dell'API rinominare il file ".env.example" in ".env". 
 - Aprire il file ".env" e impostare i valori di connessione al database .
 </br>
-<<<<<<< .merge_file_a06508
-![](../IMG_README/db-conf.png)
-</br>
-
-=======
 
 ![](../IMG_README/db-conf.png)
 
 </br>
->>>>>>> .merge_file_a10724
+
 - Ora è possibile eseguire le migrations del database dell'applicazione.
 </br>
 
@@ -132,7 +127,11 @@ In questo modo si vanno in automatico ad installare tutte le dipendenze e le lib
        - L'API è raggiungibile in locale  su http://127.0.0.1:8000;
        - Invece la web app e raggiungibile su http://127.0.0.1:5173/;
        </br>
-      Quindi impostare SESSION_DOMAIN= 127.0.0.1 e in SANCTUM_STATEFUL_DOMAINS = 127.0.0.1:5173 
+      Quindi impostare:
+      </br>
+       SESSION_DOMAIN= 127.0.0.1;
+       </br>
+       SANCTUM_STATEFUL_DOMAINS = 127.0.0.1:5173 
 </b>
 
 - L'API gestisce anche il recupero della password, questo avviene attraverso l'invio di una email all'utente interessato. Per questo motivo impostare nel file .env le variabili di ambiente per l'invio dell'email.
