@@ -91,9 +91,16 @@ In questo modo si vanno in automatico ad installare tutte le dipendenze e le lib
 - Nella folder dell'API rinominare il file ".env.example" in ".env". 
 - Aprire il file ".env" e impostare i valori di connessione al database .
 </br>
+<<<<<<< .merge_file_a06508
 ![](../IMG_README/db-conf.png)
 </br>
 
+=======
+
+![](../IMG_README/db-conf.png)
+
+</br>
+>>>>>>> .merge_file_a10724
 - Ora è possibile eseguire le migrations del database dell'applicazione.
 </br>
 
