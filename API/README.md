@@ -90,9 +90,11 @@ In questo modo si vanno in automatico ad installare tutte le dipendenze e le lib
 - Una volta avviati Apache e MySql, attraverso un client MySQL (per esempio phpMyAdmin) creare un nuovo database.
 - Nella folder dell'API rinominare il file ".env.example" in ".env". 
 - Aprire il file ".env" e impostare i valori di connessione al database .
-<br>
+</br>
+
 ![](../IMG_README/db-conf.png)
-<br>
+
+</br>
 - Ora è possibile eseguire le migrations del database dell'applicazione.
 <br>
 - Per le migrazioni si utilizza il tool fornito da Laravel:
