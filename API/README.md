@@ -1,4 +1,4 @@
-<h1 algin="center">API Restfull</h1>
+<h1 algin="center">API RESTful</h1>
 
 <details open="open">
   <summary>Sommario</summary>
@@ -12,7 +12,6 @@
     </li>
    <li><a href="#descrizione">Descrizione</a>
      <ul>
-        <li><a href="#struttura-repository">Struttura Repository</a></li>
         <li><a href="#Download-e-testare-app-in-locale">Download e testare app in locale</a></li>
       </ul>
     </li>
@@ -23,15 +22,15 @@
 <!-- Informazioni sul progetto-->
 
 ## Informazioni sul progetto
-L'API  gestisce:
+E' stata realizzata un'APIRESTful che gestisce:
 <ul>
 <li> login/logouht dell'utente,</li>
 <li> registrazione dell'utente,</li> 
 <li>recupero/reset password,</li>
-<li> recupero prodotti dal database e carrello dell'utente</li>
+<li> recupero prodotti dal database e carrello acquisti dell'utente</li>
 <ul>  
 
-#### <h3>Costruito con:</h3>
+### <h3>Costruito con:</h3>
 
 <b>Framework</b>:
 
@@ -60,13 +59,13 @@ L'API  gestisce:
 - L' API è stata sviluppata con laravel 9 .
 
 - Pachetti laravel utilizzati:
-   -  Sanctum
+   - Sanctum
    - Fortify
 
-<b>Laravel Sanctum</b> è un pacchetto Laravel semplice e leggero per implementare un sistema di autenticazione API REST per applicazioni mobili, applicazioni a pagina singola (SPA) e API basate su token.
+<b>Laravel Sanctum</b> è un pacchetto Laravel semplice e leggero per implementare un sistema di autenticazione API REST per applicazioni mobile, applicazioni a pagina singola (SPA) e API basate su token.
 <br>
-In questo caso  laravel Sanctum si è utilizzato per implementare un sistema di autenticazione API Rest per apllicazioni SPA.
-
+In questo caso, di Laravel Sanctum si è utilizzato i servizi di autenticazione di sessione basati su cookie.
+Questo approccio all'autenticazione offre i vantaggi della protezione CSRF, dell'autenticazione della sessione e protegge dalla perdita delle credenziali di autenticazione tramite XSS
 <br>
 <b>Laravel Fortify</b> è un'implementazione di backend di autenticazione indipendente dal frontend per Laravel. Fortify registra i percorsi e i controller necessari per implementare tutte le funzionalità di autenticazione di Laravel, inclusi accesso, registrazione, reimpostazione della password, verifica e-mail e altro ancora.
 
@@ -83,73 +82,81 @@ In questo caso  laravel Sanctum si è utilizzato per implementare un sistema di 
 - Scaricare il Repository.
 
 
-- Sè si utilizza XAMPP come ambiente di sviluppo si consiglia di posizionare la folder del  repository, che include le cartelle WEB_APP e API ,nella directory <b>" c:/xampp/htdocs"</b> , in quanto per impostazione predefinita i file vengono serviti da tale directory.
+- Sè si utilizza come ambiente di sviluppo come XAMPP o MAMP  si consiglia di posizionare la folder del  repository, che include le cartelle WEB_APP e API ,nella directory <b>" htdocs "</b> , in quanto per impostazione predefinita i file vengono serviti da tale directory.
+
 - Aprire la folder API attraverso il prompt dei comandi ed eseguire il comando "composer install".
 In questo modo si vanno in automatico ad installare tutte le dipendenze e le librerie di cui necessita l'applicazione.
 
-- Una volta avviati Apache e MySql dall'interfaccia di XAMPP cliccare sul pulsante Admin. In questo modo si viene reindirizzati su phpMyAdmin
-che consente di amministrare un database MySQL o MariaDB tramite un qualsiasi browser. 
-- Attraverso phpMyAdmin creare un nuovo database.
-- Rinominare il file ".env.example" in ".env". 
+- Una volta avviati Apache e MySql, attraverso un client MySQL (per esempio phpMyAdmin) creare un nuovo database.
+- Nella folder dell'API rinominare il file ".env.example" in ".env". 
 - Aprire il file ".env" e impostare i valori di connessione al database .
 <br>
 ![](../IMG_README/db-conf.png)
 <br>
-- Dopo aver configurato il database, è possibile eseguire le migrations del database dell'applicazione.
+- Ora è possibile eseguire le migrations del database dell'applicazione.
 <br>
-Le migrazioni sono come il controllo della versione per 
-il  database creato: 
-   - per eseguire le migrations eseguire il comando: <b>php artisan migrate</b>;
-   - dopo eseguire il 'seeding' del database.
-     - Eseguire il comando: <b>php artisan db:seed</b> 
-     </br>Con il Seeding si vanno a popolare la tabella products, product_categories, e users .
-     Nella tabella 'users' viene inserito un solo utente, con  le seguenti credienzali: 
-       - email: giacomorossi@gmail.com;
-       - password: Test2022? 
+- Per le migrazioni si utilizza il tool fornito da Laravel:
+
+  - Attraverso il prompt dei comandi eseguire il comando: <b>php artisan migrate</b>;
+  - dopo eseguire il 'seeding' del database attraverso il comando: <b>php artisan db:seed</b> 
+     </br></br>
+    Con il Seeding si vanno a popolare la tabella products, product_categories, e users .
+    Nella tabella 'users' viene inserito un solo utente, con  le seguenti credienzali: 
+      - email: giacomorossi@gmail.com;
+      - password: Test2022? 
   - Impostare nel file .env le variabili:
-     - SESSION_DOMAIN,
-     - SANCTUM_STATEFUL_DOMAINS.
+    - SESSION_DOMAIN,
+    - SANCTUM_STATEFUL_DOMAINS.
      <br>
-     (SESSION_DOMAIN:Questo determinerà a quali domini è disponibile il cookie nell'applicazione)
+     <b>SESSION_DOMAIN</b>: Questo determinerà a quali domini è disponibile il cookie nell'applicazione
      </br>
-     (SANCTUM_STATEFUL_DOMAINS: Domini con stato.
+     </br>
+     <b>SANCTUM_STATEFUL_DOMAINS</b>: Domini con stato.
       Le richieste dai seguenti domini/host riceverà cookie di autenticazione API con stato. 
       In genere, questi dovrebbero includere il tuo dominio locale
-      e domini di produzione che accedono alla tua API tramite una SPA frontend.)<br><br>
-    <b>N.B : API e Single page application (SPA) devono condividere lo stesso dominio di primo livello;<br>
+      e domini di produzione che accedono alla tua API tramite una SPA frontend.
+      </br></br>
+    <b>N.B</b>: API e Single page application (SPA) devono condividere lo stesso dominio di primo livello;
+    </br></br>
     PER ESEMPIO:
        - L'API è raggiungibile in locale  su http://127.0.0.1:8000;
-       - Invece la web app e raggiungibile su http://127.0.0.1:5173/;<br>
+       - Invece la web app e raggiungibile su http://127.0.0.1:5173/;
+       </br>
       Quindi impostare SESSION_DOMAIN= 127.0.0.1 e in SANCTUM_STATEFUL_DOMAINS = 127.0.0.1:5173 
 </b>
 
 - L'API gestisce anche il recupero della password, questo avviene attraverso l'invio di una email all'utente interessato. Per questo motivo impostare nel file .env le variabili di ambiente per l'invio dell'email.
 <br>
-Sei anche libero di utilizzare qualsiasi server SMTP che preferisci, come Gmail. Le relative configurazioni sono fatte nel file config/mail.php . Nella configurazione predefinita di Laravel, la configurazione dell'e-mail viene letta dalle variabili di ambiente,
+Sei libero di utilizzare qualsiasi server SMTP che preferisci, come Gmail. Le relative configurazioni sono fatte nel file config/mail.php . Nella configurazione predefinita di Laravel, la configurazione dell'e-mail viene letta dalle variabili di ambiente,
 
   - MAIL_MAILER=smtp
-    <br>(Questa opzione controlla il mailer predefinito utilizzato per inviare qualsiasi e-mail
- messaggi inviati dalla tua applicazione. È possibile impostare e utilizzare mailer alternativi secondo necessità;<br>
- Lasciandolo vuoto di defaoult sarà uguale smt (SMTP è l'acronimo di Simple Mail Transfer Protocol, letteralmente “protocollo semplice di trasferimento di posta”).) 
- <br>
-  - MAIL_HOST=smtp.googlemail.com
+   - MAIL_HOST=smtp.googlemail.com
   - MAIL_PORT=465
   - MAIL_USERNAME=youremail@gmail.com
   - MAIL_PASSWORD=your password
   - MAIL_ENCRYPTION=ssl
   - MAIL_FROM_NAME="${APP_NAME}"
+
+  </br></br>
+  <b>MAIL_MAILER</b>: Questa opzione controlla il mailer predefinito utilizzato per inviare qualsiasi e-mail
+ messaggi inviati dalla tua applicazione. È possibile impostare e utilizzare mailer alternativi secondo necessità;<br>
+ Lasciandolo vuoto di defaoult sarà uguale smt (SMTP è l'acronimo di Simple Mail Transfer Protocol, letteralmente “protocollo semplice di trasferimento di posta”).
+ </br></br>
   
 Durante lo sviluppo dell'API ho utilizzato  Mailtrap Email Delivery come soluzione di invio, che fornisce  la configurazione SMTP preimpostata.
 Al seguente link: <a>https://mailtrap.io/signin</a> si puo accedere o registrare con un account free per avere un indirizzo di prova.
 
+</br></br>
 
-Dopo aver impostato le varie variabili nel file .env eseguire i comandi:
-   - php artisan cache:clear;
+Dopo aver impostato le variabili nel file .env ritornare al prompt dei comandi ed eseguire:
 
-- Ritornare al prompt dei comandi ed eseguire il comando: <b>"php artisan key: generate"</b>.
+- php artisan cache:clear;
+- php artisan key: generate;
 </br>
-"php artisan key:generate" è un comando che imposta il valore APP_KEY nel tuo".env" file.
-- Ora si puo avviare l'API attraverso il comando: "php artisan serve" 
+</br>
+<b>php artisan key:generate</b> è un comando che imposta il valore APP_KEY nel tuo".env" file.
+
+- Ora si puo avviare l'API attraverso il comando: <b>php artisan serve</b> 
 
 ## Licenza
 
