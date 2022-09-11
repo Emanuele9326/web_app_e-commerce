@@ -12,7 +12,7 @@ import WarningResetPassword from '../components/Modal/WarningResetPassword.vue'
 const router= useRouter();
 const authservices= AuthServices();
 const er= ref('');
-//castom validators
+//castom validators;
 const special_characters = helpers.regex(/[$.|'?*+()]/);
 
 const e_mail= ref('');
@@ -22,7 +22,7 @@ const password_confirmation=ref('');
 //redirect token that is present in the mail;
 const token = router.currentRoute.value.query.token;
 
-//validation rules
+//validation rules;
 const rules = computed(() => ({
   e_mail: { required, email, $autoDirty: true },
   password: {

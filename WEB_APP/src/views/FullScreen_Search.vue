@@ -18,22 +18,18 @@ function closeSearch() {
 }
 
 async function searchProduct(category) {
- 
   document.getElementById("product").removeAttribute("disabled");
- 
+
   let cat = category.toLowerCase();
 
   productStore.getProducts(category);
 
-  await instanceAxios.axiosInstance
-    .get("/api/listproduct/" + cat)
-    .then((response) => {
-      products.value = response.data;
-    });
+  await instanceAxios.axiosInstance.get("/api/listproduct/" + cat).then((response) => {
+    products.value = response.data;
+  });
 }
 
 function filteredList(input) {
- 
   let results = products.value.filter((product) =>
     product.name.toLowerCase().includes(input.toLowerCase())
   );
@@ -42,7 +38,7 @@ function filteredList(input) {
 
 function detailProduct(category, id_product) {
   productStore.getCategories(category);
-  router.push({ name: "ProductView", params: {category: category, id: id_product } });
+  router.push({ name: "ProductView", params: { category: category, id: id_product } });
 }
 </script>
 
@@ -52,14 +48,12 @@ function detailProduct(category, id_product) {
       <span class="logo"
         ><img src="../assets/logo1.jpg" class="rounded mx-auto d-block"
       /></span>
-      <span class="closebtn" @click="closeSearch()" title="Close Overlay"
-        >×</span
-      >
+      <span class="closebtn" @click="closeSearch()" title="Close Overlay">×</span>
     </div>
 
     <div class="overlay-content">
       <form>
-        <div class=" container row m-auto">
+        <div class="container row m-auto">
           <div class="col-12">
             <select
               class="form-select category"
@@ -118,19 +112,18 @@ function detailProduct(category, id_product) {
   width: 100%;
   background: $My-Color-Theme-2-v2-rgba;
 
-  .header_search{
+  .header_search {
     display: block;
     width: 100%;
     background-color: #fff;
   }
   .overlay-content {
     display: block;
-   
+
     width: 100%;
     height: 100vh;
-    padding-top:3rem;
+    padding-top: 3rem;
     text-align: center;
-    
 
     .category {
       width: 80%;
@@ -153,7 +146,7 @@ function detailProduct(category, id_product) {
   }
 
   .closebtn:hover {
-    color:$My-Color-Theme-1-hex;
+    color: $My-Color-Theme-1-hex;
   }
   button {
     float: left;
@@ -187,7 +180,6 @@ function detailProduct(category, id_product) {
     color: #fff;
     cursor: pointer;
   }
-
 
   /* Medium devices (tablets, 768px and up)*/
   @media (min-width: 768px) {

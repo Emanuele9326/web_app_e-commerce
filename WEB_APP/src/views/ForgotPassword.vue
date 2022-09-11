@@ -14,7 +14,6 @@ function forgotPassword() {
     email: email.value,
   };
   authservices.forgotPassword(payload).then(() => {
-    console.log(authservices.status_forgotpassword);
     obj_prop.value = {
       status: authservices.status_forgotpassword,
       body: authservices.response_forgotpassword,
@@ -22,11 +21,12 @@ function forgotPassword() {
     removeform.value = true;
   });
 }
-
 </script>
 <template>
   <div class="logo">
-    <router-link to="/"><img src="../assets/logo1.jpg" class="rounded mx-auto d-block pe-auto" /></router-link>
+    <router-link to="/"
+      ><img src="../assets/logo1.jpg" class="rounded mx-auto d-block pe-auto"
+    /></router-link>
   </div>
   <ResponseResetPassword :activeResponse="obj_prop" v-if="removeform" />
   <div class="container">
@@ -35,7 +35,13 @@ function forgotPassword() {
         <!-- Email input -->
         <div class="form-outline mb-4">
           <label class="form-label" for="email">Email address</label>
-          <input type="email" id="email" class="form-control" v-model.trim="email" required/>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            v-model.trim="email"
+            required
+          />
         </div>
 
         <!-- Submit button -->
@@ -49,11 +55,10 @@ function forgotPassword() {
     </form>
   </div>
 </template>
-<style lang="scss" scoped >
-.logo{
-  img{
+<style lang="scss" scoped>
+.logo {
+  img {
     width: 280px;
   }
 }
-
 </style>

@@ -9,20 +9,20 @@ import { useRouter } from "vue-router";
 const auth = AuthServices();
 const route = useRouter();
 
-//castom validators
+//castom validators;
 const special_characters = helpers.regex(/[$.|'?*+()]/);
 
-//input
+//input;
 const name = ref("");
 const e_mail = ref("");
 const password = ref("");
 const password_confirmation = ref("");
 
-//api request error message
+//api request error message;
 const error_register = ref(false);
 const error_message = ref("");
 
-//validation rules
+//validation rules;
 const rules = computed(() => ({
   name: { required, $autoDirty: true },
   e_mail: { required, email, $autoDirty: true },
@@ -90,16 +90,15 @@ async function registerUser() {
     };
 
     let class_element = document.getElementsByClassName("error");
-  
+
     for (let i = 0; i < class_element.length; i++) {
-      //console.log(class_element[i].classList);
       class_element[i].classList.remove("error");
     }
 
     auth.registerUser(payload).then(() => {
       if (auth.status_register == 201) {
-        auth.user_login= true;
-         auth.getUseridRegister(e_mail.value);
+        auth.user_login = true;
+        auth.getUseridRegister(e_mail.value);
 
         route.push("/");
       } else if (auth.status_register == 422) {
@@ -113,7 +112,7 @@ async function registerUser() {
       }
     });
   } else {
-    //contains validation errors
+    //contains validation errors;
     const errors = v$.value.$errors;
     let inCurrent = {};
 
@@ -129,9 +128,7 @@ async function registerUser() {
       active_error.value[input_name]["message_" + input_name] = [];
 
       v$.value[input_name].$errors.forEach((er) => {
-        active_error.value[input_name]["message_" + input_name].push(
-          er.$message
-        );
+        active_error.value[input_name]["message_" + input_name].push(er.$message);
       });
     });
 
@@ -152,7 +149,9 @@ async function registerUser() {
 <template>
   <div class="container mt-5 register">
     <div style="margin: auto; text-align: center">
-      <router-link to="/"><img src="../assets/logo1.jpg" class="rounded mx-auto d-block pe-auto" /></router-link>
+      <router-link to="/"
+        ><img src="../assets/logo1.jpg" class="rounded mx-auto d-block pe-auto"
+      /></router-link>
     </div>
     <div v-if="error_register" class="error_register">{{ error_message }}</div>
     <form class="needs-validation" novalidate>
@@ -170,10 +169,7 @@ async function registerUser() {
           required
         />
         <div v-if="active_error.name.er" class="invalid_feedback">
-          <div
-            v-for="(message, index) in active_error.name.message_name"
-            :key="index"
-          >
+          <div v-for="(message, index) in active_error.name.message_name" :key="index">
             {{ message }}
           </div>
         </div>
@@ -220,9 +216,7 @@ async function registerUser() {
       </div>
       <!-- Password confirm -->
       <div class="form-outline mb-4">
-        <label class="form-label" for="password_confirmation"
-          >Conferma Password</label
-        >
+        <label class="form-label" for="password_confirmation">Conferma Password</label>
         <input
           type="password"
           id="password_confirmation"
@@ -230,10 +224,7 @@ async function registerUser() {
           v-model.trim="password_confirmation"
           class="form-control"
         />
-        <div
-          v-if="active_error.password_confirmation.er"
-          class="invalid_feedback"
-        >
+        <div v-if="active_error.password_confirmation.er" class="invalid_feedback">
           <div
             v-for="(message, index) in active_error.password_confirmation
               .message_password_confirmation"
@@ -254,9 +245,11 @@ async function registerUser() {
     </form>
   </div>
 </template>
-<style>
-.register .container {
-  --bs-gutter-x: 6rem;
+<style lang="scss" scoped>
+.register {
+  .container {
+    --bs-gutter-x: 6rem;
+  }
 }
 .error {
   border-color: rgb(173, 28, 28);

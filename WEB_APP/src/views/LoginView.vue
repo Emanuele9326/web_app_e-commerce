@@ -64,7 +64,7 @@ async function login() {
 
       if (auth_services.status_login == 200) {
         storeproduct.getCartItems(userid);
-        route.push('/');
+        route.push("/");
       } else if (auth_services.status_login == 422) {
         document.getElementById("e_mail").className += " error";
         document.getElementById("password").className += " error";
@@ -110,7 +110,6 @@ async function login() {
 function closeModel() {
   model.value = false;
 }
-
 
 /*** **/
 function password_show_hide() {
@@ -166,23 +165,27 @@ function password_show_hide() {
       <div class="form-outline mb-4">
         <label class="form-label" for="pw">Password</label>
         <div class="input-group mb-3">
-              <input 
-              name="password" 
-              type="password" 
-              class="form-control" 
-              id="password"  
-              v-model.trim="password"
-              required="true" 
-              aria-label="password" 
-              aria-describedby="basic-addon1" 
-              />
-              <div class="input-group-append ">
-                <span class="input-group-text" @click="password_show_hide()">
-                 <i class="fas fa-eye" id="show_eye"><img src="../assets/icon/eye-slash-fill.svg" style="width:1.5rem"/></i>
-                  <i class="fas fa-eye-slash d-none" id="hide_eye"> <img src="../assets/icon/eye-fill.svg" style="width:1.5rem" /></i>
-                </span>
-              </div>
-            </div>
+          <input
+            name="password"
+            type="password"
+            class="form-control"
+            id="password"
+            v-model.trim="password"
+            required="true"
+            aria-label="password"
+            aria-describedby="basic-addon1"
+          />
+          <div class="input-group-append">
+            <span class="input-group-text" @click="password_show_hide()">
+              <i class="fas fa-eye" id="show_eye"
+                ><img src="../assets/icon/eye-slash-fill.svg" style="width: 1.5rem"
+              /></i>
+              <i class="fas fa-eye-slash d-none" id="hide_eye">
+                <img src="../assets/icon/eye-fill.svg" style="width: 1.5rem"
+              /></i>
+            </span>
+          </div>
+        </div>
         <div v-if="active_error.password.er" class="invalid_feedback">
           <div
             v-for="(message, index) in active_error.password.message_password"
@@ -192,29 +195,8 @@ function password_show_hide() {
           </div>
         </div>
       </div>
-      <!--<div class="form-outline mb-4">
-        <label class="form-label" for="pw">Password</label>
-        <input
-          type="password"
-          id="password"
-          class="form-control"
-          v-model.trim="password"
-          required
-        />
-        <div v-if="active_error.password.er" class="invalid_feedback">
-          <div
-            v-for="(message, index) in active_error.password.message_password"
-            :key="index"
-          >
-            {{ message }}
-          </div>
-        </div>
-      </div>-->
-
-      
       <div class="row mb-4 mx-auto">
         <div class="col d-flex justify-content-center">
-          
           <router-link to="/forgotpassword"
             >Password dimenticata? Recupera password</router-link
           >
@@ -250,7 +232,7 @@ function password_show_hide() {
   border-color: red;
   background-color: rgba(255, 0, 0, 0.192);
 }
-.input-group-text{
+.input-group-text {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }

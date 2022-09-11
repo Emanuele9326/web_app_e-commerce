@@ -3,8 +3,6 @@ import instanceAxios from "../http/instanceAxios";
 import { AuthServices } from "./AuthService";
 import { ref } from "vue";
 
-
-
 export const storeProduct = defineStore({
     id: "storeproduct",
     state: () => ({
@@ -19,11 +17,10 @@ export const storeProduct = defineStore({
         number_block: [],
 
         cartItems: [],
-
     }),
 
     getters: {
-        // cart total without discount
+        // cart total without discount;
         cartTotalAmount: (state) => {
             return state.cartItems
                 .reduce((total, product) => {
@@ -34,21 +31,20 @@ export const storeProduct = defineStore({
                 .toFixed(2);
         },
 
-        //quantity of products in the cart
+        //quantity of products in the cart;
         quantityProducts: (state) => {
             return state.cartItems.reduce((quantityProductsCart, product) => {
                 return quantityProductsCart + product.quantity;
             }, 0);
         },
 
-        // discounted price if items> 3
+        // discounted price if items> 3;
         totalPriceDiscount: (state) => {
             let discountValue = (state.cartTotalAmount * 10) / 100;
             let discountedPrice = (state.cartTotalAmount - discountValue).toFixed(2);
 
             return discountedPrice;
         },
-
     },
 
     actions: {
@@ -115,7 +111,7 @@ export const storeProduct = defineStore({
                 this.productsBlock = [];
             }
 
-            //"beforenumber = 0" : it means that we have only one block of "n" products or it is in the first block
+            //"beforenumber = 0" : it means that we have only one block of "n" products or it is in the first block;
             if (!beforenumber) {
                 for (let i = 0; i < number; i++) {
                     this.productsBlock.push(this.products[i]);
@@ -128,7 +124,6 @@ export const storeProduct = defineStore({
                 }
             }
         },
-
 
         async getProducts(category) {
             await instanceAxios.axiosInstance
@@ -167,7 +162,7 @@ export const storeProduct = defineStore({
             }
         },
 
-        //adds products to the cart_items table
+        //adds products to the cart_items table;
         async cartsItems(payload) {
             try {
                 await instanceAxios.axiosInstance.post("/api/addcartitems", payload);

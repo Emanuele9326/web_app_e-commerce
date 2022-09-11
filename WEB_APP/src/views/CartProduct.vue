@@ -3,23 +3,20 @@ import { storeProduct } from "../stores/StoreProduct";
 import { AuthServices } from "../stores/AuthService";
 import { useRouter } from "vue-router";
 import GlobalFooter from "../components/GlobalFooter.vue";
-import {watch} from "vue";
-
-
-
+import { watch } from "vue";
 
 const auth = AuthServices();
 
 const storeproduct = storeProduct();
-const cartItem= storeproduct.cartItems;
-const router= useRouter();
+const cartItem = storeproduct.cartItems;
+const router = useRouter();
 
 watch(
-  ()=>storeproduct.quantityProducts,
-  ()=>{
+  () => storeproduct.quantityProducts,
+  () => {
     storeproduct.updateTableCartitems();
   }
-)
+);
 
 function removeCart_item(id) {
   let i = cartItem.findIndex((item) => item.id == id);
@@ -45,19 +42,16 @@ function totalitem(art) {
   let total = (art.price * art.quantity).toFixed(2);
   return total;
 }
-
-
 </script>
 
 <template>
   <div class="p-0 cart_prod">
     <div class="row m-auto mb-4 cart_title">
-      <div class="col  row_left">
+      <div class="col row_left">
         <router-link to="/">
-        <img src="../assets/logo1.jpg" class="logo" style="width: 280px"
+          <img src="../assets/logo1.jpg" class="logo" style="width: 280px"
         /></router-link>
       </div>
-    
     </div>
     <div class="container container_items text-center">
       <div
@@ -66,10 +60,7 @@ function totalitem(art) {
         :key="item.id"
       >
         <div class="col col-sm-3 img m-auto">
-       
-        <img :src="item.image" class="img-thumbnail m-auto" />
-          
-          
+          <img :src="item.image" class="img-thumbnail m-auto" />
         </div>
         <div class="col-6 col-sm-7 p-0 me-auto">
           <div class="container text-center">
@@ -215,7 +206,7 @@ function totalitem(art) {
       text-align: center;
       margin: auto;
     }
-    
+
     .plus_less {
       padding: 10px 10px;
     }
@@ -232,7 +223,7 @@ function totalitem(art) {
     .cart_title {
       width: 100%;
     }
-  
+
     .img-thumbnail {
       max-width: 70%;
     }

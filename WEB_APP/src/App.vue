@@ -1,4 +1,3 @@
-<!-- eslint-disable prettier/prettier -->
 <script setup>
 import { RouterView } from "vue-router";
 </script>
@@ -65,12 +64,7 @@ import { RouterView } from "vue-router";
       height: 25px;
     }
   }
-  @media (max-width:389px){
-    
-
-  }
   
-
   @media (min-width: 400px) {
    
     .nav_icon {

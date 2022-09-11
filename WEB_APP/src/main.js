@@ -3,7 +3,6 @@ import { createPinia } from "pinia";
 
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-//import "./assets/main.scss";
 import "./assets/base.css";
 
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
@@ -24,5 +23,4 @@ app.use(pinia);
 
 app.use(router);
 
-// eslint-disable-next-line prettier/prettier
 app.mount("#app");

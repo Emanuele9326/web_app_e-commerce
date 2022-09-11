@@ -1,7 +1,7 @@
 <script setup>
 import { storeProduct } from "../stores/StoreProduct.js";
 import { AuthServices } from "../stores/AuthService";
-import { useRouter} from "vue-router";
+import { useRouter } from "vue-router";
 
 const productStore = storeProduct();
 const auth_services = AuthServices();
@@ -15,14 +15,13 @@ function Logouth() {
   auth_services.logout().then(() => {
     auth_services.user_id = "";
     auth_services.user_login = false;
-    productStore.user_id= "";
-    productStore.user_login=false;
+    productStore.user_id = "";
+    productStore.user_login = false;
     productStore.cartItems.splice(0, productStore.cartItems.length);
 
     router.go();
   });
 }
-
 </script>
 
 <template>
@@ -30,15 +29,12 @@ function Logouth() {
     <div class="container-fluid px-0 intro_navbar">
       <div class="logo ms-sm-3">
         <router-link to="/">
-          <img
-            class="w-100 img_logo align-middle m"
-            src="../assets/logo1.jpg"
-            alt=""
+          <img class="w-100 img_logo align-middle m" src="../assets/logo1.jpg" alt=""
         /></router-link>
       </div>
 
       <button
-        class="navbar-toggler mx-4 "
+        class="navbar-toggler mx-4"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasMenu"
@@ -139,15 +135,11 @@ function Logouth() {
 </template>
 <style lang="scss" scoped>
 .navbar-toggler {
-    //font-size: var(--bs-navbar-toggler-font-size);
-   // line-height: 1;
-    color: $My-Color-Theme-5-rgba;
-    background-color: transparent;
-    border: var(--bs-border-width) solid $My-Color-Theme-3-rgba;
-    //border-radius: var(--bs-navbar-toggler-border-radius);
-   // transition: var(--bs-navbar-toggler-transition);
+  color: $My-Color-Theme-5-rgba;
+  background-color: transparent;
+  border: var(--bs-border-width) solid $My-Color-Theme-3-rgba;
 }
-.text-navbar{
+.text-navbar {
   cursor: pointer;
 }
 .logo {
@@ -156,8 +148,8 @@ function Logouth() {
   margin: auto;
 }
 .sandwich_menu {
-    width: 50px;
-  }
+  width: 50px;
+}
 
 ul {
   list-style: none;
@@ -210,11 +202,11 @@ span {
     }
   }
 }
-@media (max-width: 575px){
-  .log_in_outh{
+@media (max-width: 575px) {
+  .log_in_outh {
     padding-right: 0px;
   }
-  .badge{
+  .badge {
     font-size: small;
     padding-left: 4px;
     padding-right: 4px;
@@ -225,7 +217,6 @@ span {
   }
 }
 @media (max-width: 991px) {
-
   li:nth-child(odd) {
     background-color: $My-Color-Theme-2-v2-rgba;
     padding: 10px 0px;

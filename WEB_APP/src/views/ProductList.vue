@@ -1,5 +1,4 @@
 <script setup>
-import {ref} from 'vue';
 import { storeProduct } from "../stores/StoreProduct.js";
 import { useRoute } from "vue-router";
 import NavBar from "../components/NavBar.vue";
@@ -24,8 +23,7 @@ productStore.getProducts(category);
 productStore.divisionProducts();
 const numberblock = productStore.number_block;
 
-productStore.itemsPage(numberblock[0],0)
-
+productStore.itemsPage(numberblock[0], 0);
 </script>
 
 <template>
@@ -42,14 +40,12 @@ productStore.itemsPage(numberblock[0],0)
       <div class="items">
         <div class="container">
           <div class="row row-cols-2">
-
             <div
               class="col-12 col-sm-6 col-md-4 colcard"
               v-for="(item, id) in productStore.productsBlock"
               :key="id"
               data-test="card_product"
             >
-            
               <router-link
                 :to="{
                   name: 'ProductView',
@@ -75,10 +71,14 @@ productStore.itemsPage(numberblock[0],0)
           </div>
         </div>
       </div>
-      <nav  class="container ">
-        <ul class="pagination  justify-content-center">
+      <nav class="container">
+        <ul class="pagination justify-content-center">
           <li class="page-item" v-for="(item, id) in productStore.number_block" :key="id">
-            <span class="page-link" @click="productStore.itemsPage(item, productStore.number_block[id-1])">{{id+1}}</span>
+            <span
+              class="page-link"
+              @click="productStore.itemsPage(item, productStore.number_block[id - 1])"
+              >{{ id + 1 }}</span
+            >
           </li>
         </ul>
       </nav>
@@ -108,9 +108,8 @@ productStore.itemsPage(numberblock[0],0)
       margin-top: 1rem;
       .card-body {
         .title-product {
-            font-size: 19px;
-            color: $secondary;
-          
+          font-size: 19px;
+          color: $secondary;
         }
 
         .price {
@@ -121,19 +120,18 @@ productStore.itemsPage(numberblock[0],0)
       }
     }
   }
-  .page-link{
-    color:$secondary;
+  .page-link {
+    color: $secondary;
   }
-  .pagination{
-    --bs-pagination-focus-bg:$My-Color-Theme-2-1-rgba;
-    --bs-pagination-focus-box-shadow:$My-Color-Theme-2-1-rgba;
+  .pagination {
+    --bs-pagination-focus-bg: $My-Color-Theme-2-1-rgba;
+    --bs-pagination-focus-box-shadow: $My-Color-Theme-2-1-rgba;
     cursor: pointer;
   }
   @media (min-width: 300px) {
     .card-body {
       .title-product {
-         font-size: 10px;
-        
+        font-size: 10px;
       }
 
       .price {
