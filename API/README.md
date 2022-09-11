@@ -22,9 +22,9 @@
 <!-- Informazioni sul progetto-->
 
 ## Informazioni sul progetto
-E' stata realizzata un'APIRESTful che gestisce:
+E' stata realizzata un'API RESTful che gestisce:
 <ul>
-<li> login/logouht dell'utente,</li>
+<li> login/logout dell'utente,</li>
 <li> registrazione dell'utente,</li> 
 <li>recupero/reset password,</li>
 <li> recupero prodotti dal database e carrello acquisti dell'utente</li>
@@ -82,7 +82,7 @@ Questo approccio all'autenticazione offre i vantaggi della protezione CSRF, dell
 - Scaricare il Repository.
 
 
-- Sè si utilizza come ambiente di sviluppo come XAMPP o MAMP  si consiglia di posizionare la folder del  repository, che include le cartelle WEB_APP e API ,nella directory <b>" htdocs "</b> , in quanto per impostazione predefinita i file vengono serviti da tale directory.
+- Sè si utilizza come ambiente di sviluppo XAMPP o MAMP  si consiglia di posizionare la folder del repository, che include le cartelle WEB_APP e API ,nella directory <b>" htdocs "</b> , in quanto per impostazione predefinita i file vengono serviti da tale directory.
 
 - Aprire la folder API attraverso il prompt dei comandi ed eseguire il comando "composer install".
 In questo modo si vanno in automatico ad installare tutte le dipendenze e le librerie di cui necessita l'applicazione.
@@ -125,6 +125,7 @@ In questo modo si vanno in automatico ad installare tutte le dipendenze e le lib
     <b>PER ESEMPIO:</b>:
     </br>
        - L'API è raggiungibile in locale  su http://127.0.0.1:8000;
+       
        - Invece la web app e raggiungibile su http://127.0.0.1:5173/;
        </br>
       Quindi impostare:
@@ -139,15 +140,16 @@ In questo modo si vanno in automatico ad installare tutte le dipendenze e le lib
 Sei libero di utilizzare qualsiasi server SMTP che preferisci, come Gmail. Le relative configurazioni sono fatte nel file config/mail.php . Nella configurazione predefinita di Laravel, la configurazione dell'e-mail viene letta dalle variabili di ambiente,
 
   - MAIL_MAILER=smtp
-   - MAIL_HOST=smtp.googlemail.com
+  - MAIL_HOST=smtp.googlemail.com
   - MAIL_PORT=465
   - MAIL_USERNAME=youremail@gmail.com
-  - MAIL_PASSWORD=your password
+  - MAIL_FROM_ADDRESS=youremail@gmail.com
+  - MAIL_PASSWORD=wempehveagsrjwxc  //create app password to access google account
   - MAIL_ENCRYPTION=ssl
   - MAIL_FROM_NAME="${APP_NAME}"
 
   </br></br>
-  <b>MAIL_MAILER</b>: Questa opzione controlla il mailer predefinito utilizzato per inviare qualsiasi e-mail
+  <b>MAIL_MAILER</b>: Questa opzione controlla il mailer predefinito utilizzato per inviare qualsiasi e-mail/
  messaggi inviati dalla tua applicazione. È possibile impostare e utilizzare mailer alternativi secondo necessità;<br>
  Lasciandolo vuoto di defaoult sarà uguale smt (SMTP è l'acronimo di Simple Mail Transfer Protocol, letteralmente “protocollo semplice di trasferimento di posta”).
  </br></br>

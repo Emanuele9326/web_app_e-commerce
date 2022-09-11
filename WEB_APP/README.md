@@ -49,7 +49,7 @@ L'utente non autenticato puo navigare fino alla pagina dettaglio prodotto per ag
 </br>
 </br>
 
-- Si è stabilito che sè il cliente acquista più di 3 prodotti, riceve uno sconto del 10% sul totale.
+- Si è stabilito che sè il cliente acquista più di 3 prodotti, riceve uno sconto del 10% sul totale del carrello.
 </br>
 </br>
 
@@ -59,11 +59,11 @@ L'utente non autenticato puo navigare fino alla pagina dettaglio prodotto per ag
 
 - Sul proprio dispositivo è necessario installare: 
    - Nodo.js (per il buon funzionamento dell'app è necessaria una versione : v^16.13.0)
-   - gestore di pachetti npm. 
+   - gestore di pacchetti npm. 
 
 L'app può essere testata in locale eseguendo i seguenti passaggi:
 
-- E' necessario prima aver copletato la configurazione in locale dell'APIRESTful. Per il download e la configurazione dell'API si rimanda al relativo README presente nella folder API.
+- E' necessario prima aver completato la configurazione in locale dell'API RESTful. Per il download e la configurazione dell'API si rimanda al relativo README presente nella folder API.
 
 - Clonare il repository del progetto in locale 
 
