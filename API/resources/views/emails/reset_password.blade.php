@@ -34,6 +34,7 @@
     .btn-primary {
         background-color: #877524;
         border-color: #877524;
+        color:white;
 
         --bs-btn-bg: #877524;
         --bs-btn-border-color: #877524;
@@ -47,6 +48,13 @@
 
         --bs-btn-disabled-bg: #877524;
         --bs-btn-disabled-border-color: #877524;
+    }
+    .d-grid{
+        text-align: center !important;
+    }
+    button{
+        padding: 0.8rem;
+        border-radius: 8px;
     }
 </style>
 
@@ -71,8 +79,9 @@
             <br>
             <p class="text-center fs-6">
                 Se hai problemi a fare clic sul pulsante "Reimposta password", copia e incolla
-                l'URL riportato di seguito nel tuo browser web: <a href=`$url`>{{ $url }}</a>
+                l'URL riportato di seguito nel tuo browser web: 
             </p>
+            {{ $url }}
         </div>
 
     </div>

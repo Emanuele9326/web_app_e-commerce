@@ -64,7 +64,7 @@ async function login() {
 
       if (auth_services.status_login == 200) {
         storeproduct.getCartItems(userid);
-        route.go(-1);
+        route.push('/');
       } else if (auth_services.status_login == 422) {
         document.getElementById("e_mail").className += " error";
         document.getElementById("password").className += " error";

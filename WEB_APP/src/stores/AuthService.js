@@ -31,15 +31,6 @@ export const AuthServices = defineStore({
 
         }),
 
-        getters: {
-
-            // controlla sè abbiamo un utente loggato oppure no-- restituisce vero o falso
-
-            isLogged: (state) => state.user !== null,
-            removeUser: (state) => state.user = null
-
-        },
-
 
         actions: {
 
@@ -69,7 +60,7 @@ export const AuthServices = defineStore({
                         });
 
                 } catch (error) {
-                    console.error(error);
+
                     this.status_register = error.response.status;
                     this.message_error_register = error.response.data.message;
                 }
@@ -139,7 +130,7 @@ export const AuthServices = defineStore({
 
                         });
                 } catch (error) {
-                    console.log(error)
+                    console.error(error)
                 }
 
 

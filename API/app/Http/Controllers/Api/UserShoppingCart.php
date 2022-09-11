@@ -10,37 +10,44 @@ use Illuminate\Http\Request;
 
 class UserShoppingCart extends Controller
 {
-    
+
     /**
      * get Id user.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-      function getUserid($user_email){
-         return User::where('users.email',$user_email)
-         ->select('id','name')->get();
-      }
+    function getUserid($user_email)
+    {
+        return User::where('users.email', $user_email)
+            ->select('id', 'name')->get();
+    }
 
-    function getCartItems($user_id){
-        $item = CartItem::join('products',  'cart_items.product_id','=','products.id')
-        ->where('cart_items.user_id',$user_id)
-        ->select(
-        'products.id',
-        'cart_items.product_code',
-        'products.name',
-        'cart_items.quantity',
-        'products.price',
-        'products.description',
-        'products.image',
-        'cart_items.updated_at',
-    )->get();
+    /**
+     * For the authenticated user it goes to read the products in the cart if present;
+     * 
+     * * */
+
+    function getCartItems($user_id)
+    {
+        $item = CartItem::join('products',  'cart_items.product_id', '=', 'products.id')
+            ->where('cart_items.user_id', $user_id)
+            ->select(
+                'products.id',
+                'cart_items.product_code',
+                'products.name',
+                'cart_items.quantity',
+                'products.price',
+                'products.description',
+                'products.image',
+                'cart_items.updated_at',
+            )->get();
         return $item;
     }
 
-    
+
     /**
-     * Store a new user.
+     * Add products to cartItems  for the authenticated user.;
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -51,39 +58,38 @@ class UserShoppingCart extends Controller
 
 
 
-        $payload= array_values($request->all());
-       
-       
+        $payload = array_values($request->all());
+
+
         CartItem::upsert(
 
             $payload,
-            ['id','product_code'],
-            ['product_id','user_id','quantity']
+            ['id', 'product_code'],
+            ['product_id', 'user_id', 'quantity']
 
         );
-        
     }
     /**
-     * Store a new user.
+     * removes the products in the cartItems for the authenticated user.;
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
 
 
-    function removeCartitem(Request $request){
+    function removeCartitem(Request $request)
+    {
 
         $user_cart_id = $request->user_cart_id;
-        $product_code= $request->product_code;
+        $product_code = $request->product_code;
 
-        CartItem::where('user_id',$user_cart_id)
-        ->where('product_code',$product_code)
-        ->delete();
+        CartItem::where('user_id', $user_cart_id)
+            ->where('product_code', $product_code)
+            ->delete();
 
-        return  response()->json(['status' => 'ok',
-         "product_code"=>$product_code]);
-       
-
-
+        return  response()->json([
+            'status' => 'ok',
+            "product_code" => $product_code
+        ]);
     }
 }

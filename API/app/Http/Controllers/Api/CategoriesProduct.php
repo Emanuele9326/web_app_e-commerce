@@ -10,7 +10,7 @@ use App\Models\ProductCategory;
 class CategoriesProduct extends Controller
 {
     /**
-     * Revenue product categories
+     * product categories
      * 
      */
     
