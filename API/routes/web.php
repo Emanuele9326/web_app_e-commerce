@@ -16,7 +16,4 @@ use Illuminate\Support\Facades\Facade;
 |
 */
 
-/*Route::get('/', function () {
-    return view('reset_password',['url'=>'prova']);
-}
-);*/
+

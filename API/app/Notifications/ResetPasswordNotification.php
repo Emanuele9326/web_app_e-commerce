@@ -71,11 +71,6 @@ class ResetPasswordNotification extends Notification
                 'emails.reset_password', ['name'=>$notifiable->name,'url' => $url]
             )
             ->subject(Lang::get('Reset Password'));
-    
-       /* return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');*/
     }
     
     /**

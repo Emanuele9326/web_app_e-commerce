@@ -19,8 +19,6 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        //DB::table('products')->delete();
-        //Product::truncate();
         $csvData = fopen(base_path('database/csv/products.csv'), 'r');
         $transRow = true;
         while (($data = fgetcsv($csvData, 555, ',')) !== false) {

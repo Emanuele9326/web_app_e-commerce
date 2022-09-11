@@ -24,9 +24,10 @@ class UserShoppingCart extends Controller
     }
 
     /**
-     * For the authenticated user it goes to read the products in the cart if present;
+     * For the authenticated user, it goes to read the products in the cart_items table if present;
      * 
-     * * */
+     * 
+     */
 
     function getCartItems($user_id)
     {
