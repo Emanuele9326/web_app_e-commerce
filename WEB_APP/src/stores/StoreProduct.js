@@ -167,7 +167,11 @@ export const storeProduct = defineStore({
             try {
                 await instanceAxios.axiosInstance.post("/api/addcartitems", payload);
             } catch (error) {
-                console.error(error);
+                let error_status = error.response.status;
+                if (error_status == 401) {
+                    // window.location.replace('/login')
+                }
+
             }
         },
 

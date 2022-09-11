@@ -44,6 +44,7 @@ export const AuthServices = defineStore({
                 await http.axiosInstance.get("/sanctum/csrf-cookie");
                 await http.axiosInstance.post("/register", payload).then((response) => {
                     this.status_register = response.status;
+                    this.status_login = 200;
                 });
             } catch (error) {
                 this.status_register = error.response.status;
@@ -108,14 +109,15 @@ export const AuthServices = defineStore({
                 await http.axiosInstance.get("/sanctum/csrf-cookie");
 
                 await http.axiosInstance.get("/api/authUser").then((response) => {
-                    this.user_login = true;
-                    return this.user_login;
+                    console.log('status_login:' + response.status);
                 });
             } catch (error) {
                 if (error.response.status == 401) {
                     console.log("error Unauthorized:" + error.response.status);
                     this.user_login = false;
-                    return error.response.status;
+                    this.user_id = "";
+                    this.status_login = error.response.status
+
                 }
 
             }

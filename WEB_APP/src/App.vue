@@ -1,5 +1,30 @@
 <script setup>
 import { RouterView } from "vue-router";
+import { AuthServices } from "./stores/AuthService";
+import { storeProduct } from "./stores/StoreProduct";
+import { useRouter } from "vue-router";
+
+const auth_services = AuthServices();
+const productStore = storeProduct();
+const router = useRouter();
+//check if the user authentication is valid;
+if (auth_services.user_login) {
+  auth_services.checkLoginUser().then(() => {
+    if (auth_services.status_login == '401') {
+      
+      auth_services.status_login="";
+      auth_services.status_register="";
+      
+      productStore.user_login = false;
+      productStore.user_id = "";
+      productStore.cartItems = [];
+
+
+      router.go();
+
+    }
+  });
+}
 </script>
 
 <template>
@@ -11,7 +36,7 @@ import { RouterView } from "vue-router";
 #app {
   background-color: #fff;
   color: $secondary;
-  
+
 
   a {
     color: $My-Color-Theme-3-hex;
@@ -25,12 +50,12 @@ import { RouterView } from "vue-router";
     width: 23px;
     height: 23px;
   }
-  
+
   .btn-primary {
   background-color: #ada955;
   border-color: #ada955;
 }
-  
+
 .btn-primary {
     --bs-btn-color: #fff;
     --bs-btn-bg: $primary;
@@ -46,7 +71,7 @@ import { RouterView } from "vue-router";
     --bs-btn-disabled-color: #fff;
     --bs-btn-disabled-bg: $primary;
     --bs-btn-disabled-border-color: $primary;
-}  
+}
 
 
   @media (hover: hover) {
@@ -64,9 +89,9 @@ import { RouterView } from "vue-router";
       height: 25px;
     }
   }
-  
+
   @media (min-width: 400px) {
-   
+
     .nav_icon {
       width: 30px;
       height: 30px;

@@ -2,22 +2,19 @@
 import { storeProduct } from "../stores/StoreProduct.js";
 import { AuthServices } from "../stores/AuthService";
 import { useRouter } from "vue-router";
-import NavBar from "../components/NavBar.vue"
+import NavBar from "../components/NavBar.vue";
 import GlobalFooter from "../components/GlobalFooter.vue";
 
-
-const productStore = storeProduct();
 const auth_services = AuthServices();
+const productStore = storeProduct();
 
 const router = useRouter();
 
 productStore.getCategories();
- 
-
 </script>
 <template>
   <header class="mx-3">
-    <NavBar/>
+    <NavBar />
   </header>
 
   <main class="d-block">
@@ -26,19 +23,16 @@ productStore.getCategories();
       <div class="container my-5 intro fs-3">
         <h3>Vendita online di prodotti tipici delle varie località italane</h3>
         <p class="mt-5 fs-5">
-          Scoprirai i migliori prodotti dell’enogastronomia italiana con un
-          click Cosa aspetti, scopri il nostro negozio online <br />
+          Scoprirai i migliori prodotti dell’enogastronomia italiana con un click Cosa
+          aspetti, scopri il nostro negozio online <br />
           <strong>L'Angolo della Bontà</strong>
         </p>
       </div>
     </div>
     <div class="container text-center d-block">
-      <div
-        class="row home justify-content-center overflow-auto"
-       
-      >
+      <div class="row home justify-content-center overflow-auto">
         <router-link
-          class=" col-12 col-sm-5 m-2 p-3"
+          class="col-12 col-sm-5 m-2 p-3"
           v-for="category in productStore.categories"
           :key="category"
           :to="{
@@ -53,7 +47,7 @@ productStore.getCategories();
               alt="..."
             />
             <div class="card-img-overlay m-auto">
-              <h5 class="card-text align-middle  fs-1 m-auto ">
+              <h5 class="card-text align-middle fs-1 m-auto">
                 {{ category.toUpperCase() }}
               </h5>
             </div>
@@ -67,43 +61,35 @@ productStore.getCategories();
     <div class="container mt-5">
       <div class="row">
         <div class="col service me-2 p-4">
-          <span
-            ><img src="../assets/icon/package.svg" style="width: 30px" /></span
+          <span><img src="../assets/icon/package.svg" style="width: 30px" /></span
           ><span style="display: inline-block"><h5>IMBALLAGGI SICURI</h5></span>
           <p class="mt-4">Ogni pacco viene accuratamente preparato</p>
         </div>
         <div class="col service me-2 p-4">
-          <span
-            ><img src="../assets/icon/payment.svg" style="width: 30px" /></span
+          <span><img src="../assets/icon/payment.svg" style="width: 30px" /></span
           ><span style="display: inline-block"><h5>PAGAMENETI SICURI</h5></span>
           <p class="mt-4">Visa, Mastercard, Bonifico bancario o PayPal</p>
         </div>
         <div class="col service me-2 p-4">
-          <span
-            ><img
-              src="../assets/icon/chat-text.svg"
-              style="width: 30px" /></span
+          <span><img src="../assets/icon/chat-text.svg" style="width: 30px" /></span
           ><span style="display: inline-block"><h5>SUPPORTO CLIENTE</h5></span>
           <p class="mt-4">
             Cell, email e Social <br />
             Lun-Ven 9-13 14:30-18:30
           </p>
         </div>
-        
       </div>
-      
     </div>
-    <GlobalFooter/>
+    <GlobalFooter />
   </footer>
 </template>
 
-<style lang="scss" scoped >
-  
-  .fs-1{
-    font-size: cart_font_size_1() !important;
-  }
+<style lang="scss" scoped>
+.fs-1 {
+  font-size: cart_font_size_1() !important;
+}
 
-  .desch4 {
+.desch4 {
   text-align: center;
   background-color: $My-Color-Theme-2-v2-rgba;
   color: $My-Color-Theme-4-rgba;
@@ -140,7 +126,7 @@ productStore.getCategories();
 }
 
 .service {
- background-color: $My-Color-Theme-2-1-rgba;
+  background-color: $My-Color-Theme-2-1-rgba;
   border-radius: 2px;
   margin-bottom: 1rem;
 }
@@ -160,7 +146,6 @@ productStore.getCategories();
   outline: 0;
 }
 
-
 .navbar-toggler:focus {
   box-shadow: 0 0 0 0rem;
 }
@@ -171,10 +156,8 @@ productStore.getCategories();
 }
 
 @media only screen and (min-device-width: 576px) and (max-device-width: 991px) {
-  .card-text{
+  .card-text {
     display: none;
   }
 }
-
-
 </style>
