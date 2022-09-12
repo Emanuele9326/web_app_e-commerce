@@ -152,7 +152,7 @@ async function resetPassword(){
 </script>
 
 <template>
-  <div class="container m-auto"><img src="../assets/logo1.jpg" class="rounded mx-auto d-block pe-auto"
+  <div class="container m-auto"><img src="../assets/logo1.jpg" class="rounded mx-auto d-block pe-auto logo_1"
     /></div>
 <div class="container">
 <div v-if="messagerror" style="color:red"><h5 >{{ authservices.response_resetpassword }}</h5></div>
@@ -231,6 +231,9 @@ async function resetPassword(){
 
 </template>
 <style lang="scss" scoped>
+  .logo_1{
+    width: 280px;
+  }
  .register .container {
   --bs-gutter-x: 6rem;
 }

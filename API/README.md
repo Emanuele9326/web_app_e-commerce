@@ -134,7 +134,9 @@ In questo modo si vanno in automatico ad installare tutte le dipendenze e le lib
        SESSION_DOMAIN= 127.0.0.1;
        </br>
        SANCTUM_STATEFUL_DOMAINS = 127.0.0.1:5173 
-</b>
+       </br></br>
+- Impostare la variabile SPA_URL= "url che punta alla web_app"
+
 
 - L'API gestisce anche il recupero della password, questo avviene attraverso l'invio di una email all'utente interessato. Per questo motivo impostare nel file .env le variabili di ambiente per l'invio dell'email.
 <br>
