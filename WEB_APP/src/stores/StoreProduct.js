@@ -69,7 +69,7 @@ export const storeProduct = defineStore({
                 console.error(error);
             }
         },
-        
+
         //splits the products array into blocks of 'n' (n = 6) elements;
         divisionProducts() {
             //number of blocks based on the number of products;
@@ -86,27 +86,21 @@ export const storeProduct = defineStore({
             let number_product = this.products.length;
 
             for (let i = 1; i <= number_block; i++) {
-
                 if (number_product == numberitems_forblock) {
                     numberitems_forblock_2.push(numberitems_forblock);
-
-
                 } else {
                     //It is assumed that the number of products can be equal to or greater than 6;
                     if (i !== number_block) {
                         numberitems_forblock_2.push(numberitems_forblock);
                         number_product = number_product - numberitems_forblock;
-
                     } else {
-                        numberitems_forblock_2.push(number_product)
+                        numberitems_forblock_2.push(number_product);
                     }
-
                 }
             }
 
             //each element in "number_block" is the number of products for each block;
             this.number_block = numberitems_forblock_2;
-
         },
 
         itemsPage(number, beforenumber) {
@@ -178,7 +172,6 @@ export const storeProduct = defineStore({
                 if (error_status == 401) {
                     // window.location.replace('/login')
                 }
-
             }
         },
 
