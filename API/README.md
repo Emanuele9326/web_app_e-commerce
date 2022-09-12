@@ -154,7 +154,7 @@ Sei libero di utilizzare qualsiasi server SMTP che preferisci, come Gmail. Le re
   </br></br>
   <b>MAIL_MAILER</b>: Questa opzione controlla il mailer predefinito utilizzato per inviare qualsiasi e-mail/
  messaggi inviati dalla tua applicazione. È possibile impostare e utilizzare mailer alternativi secondo necessità;<br>
- Lasciandolo vuoto di defaoult sarà uguale smt (SMTP è l'acronimo di Simple Mail Transfer Protocol, letteralmente “protocollo semplice di trasferimento di posta”).
+ Lasciandolo vuoto di defaoult sarà uguale smtp (SMTP è l'acronimo di Simple Mail Transfer Protocol, letteralmente “protocollo semplice di trasferimento di posta”).
  </br></br>
   
 Durante lo sviluppo dell'API ho utilizzato  Mailtrap Email Delivery come soluzione di invio, che fornisce  la configurazione SMTP preimpostata.
