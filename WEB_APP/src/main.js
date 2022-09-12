@@ -17,7 +17,6 @@ pinia.use(piniaPluginPersistedstate);
 const app = createApp(App);
 
 app.config.globalProperties.$http = http;
-app.config.globalProperties.$apiUri = "http://localhost/prog/web-app/public";
 
 app.use(pinia);
 
