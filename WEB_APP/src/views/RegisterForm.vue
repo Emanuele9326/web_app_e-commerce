@@ -150,7 +150,7 @@ async function registerUser() {
   <div class="container mt-5 register">
     <div style="margin: auto; text-align: center">
       <router-link to="/"
-        ><img src="../assets/logo1.jpg" class="rounded mx-auto d-block pe-auto"
+        ><img src="../assets/logo1.jpg" class="rounded mx-auto d-block pe-auto logo_1"
       /></router-link>
     </div>
     <div v-if="error_register" class="error_register">{{ error_message }}</div>
@@ -246,6 +246,9 @@ async function registerUser() {
   </div>
 </template>
 <style lang="scss" scoped>
+.logo_1{
+    width: 280px;
+  }
 .register {
   .container {
     --bs-gutter-x: 6rem;
