@@ -122,8 +122,9 @@ In questo modo si vanno in automatico ad installare tutte le dipendenze e le lib
       </br></br>
     <b>N.B</b>: API e Single page application (SPA) devono condividere lo stesso dominio di primo livello;
     </br></br>
-    <b>PER ESEMPIO:</b>:
+    <b>PER ESEMPIO:</b>
     </br>
+    
        - L'API è raggiungibile in locale  su http://127.0.0.1:8000;
        
        - Invece la web app e raggiungibile su http://127.0.0.1:5173/;

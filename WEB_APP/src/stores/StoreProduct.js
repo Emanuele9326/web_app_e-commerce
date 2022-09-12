@@ -70,7 +70,9 @@ export const storeProduct = defineStore({
             }
         },
 
+
         //splits the products array into blocks of 'n' (n = 6) elements;
+        //manages the number of products in the "Product List" view;
         divisionProducts() {
             //number of blocks based on the number of products;
             let float_number_block = this.products.length / 6;
