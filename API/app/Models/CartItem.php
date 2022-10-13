@@ -11,13 +11,9 @@ class CartItem extends Model
     use HasFactory;
 
     protected $guarded = [];
+
     protected static function booted()
     {
         static::addGlobalScope(new WhereScope);
-    }
-
-    public function product()
-    {
-        return $this->belongsTo(Product::class);
     }
 }
