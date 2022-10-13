@@ -4,18 +4,18 @@ import { AuthServices } from "./stores/AuthService";
 import { useStoreProduct } from "./stores/StoreProduct";
 import { useRouter } from "vue-router";
 
-const auth_services = AuthServices();
+const authServices = AuthServices();
 const productStore = useStoreProduct();
 const router = useRouter();
 //check if the user authentication is valid;
-if (auth_services.userLogin) {
-  auth_services.checkLoginUser().then(() => {
-    if (auth_services.statuslogin == "401") {
-      auth_services.statuslogin = "";
-      auth_services.statusRegister = "";
+if (authServices.userLogin) {
+  authServices.checkLoginUser().then(() => {
+    if (authServices.statuslogin == "401") {
+      authServices.statuslogin = "";
+      authServices.statusRegister = "";
+      authServices.userLogin = false;
+      authServices.userId = "";
 
-      productStore.userLogin = false;
-      productStore.userId = "";
       productStore.cartItems = [];
 
       router.go();
