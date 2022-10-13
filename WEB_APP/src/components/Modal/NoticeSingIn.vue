@@ -12,7 +12,9 @@ function close() {
       <div class="text-end">
         <button type="button" class="btn-close fs-4" @click="close()"></button>
       </div>
-      <div class="text text-center p-4 fs-5 fw-bold">Accedi per proseguire!</div>
+      <div class="text text-center p-4 fs-5 fw-bold">
+        Accedi per proseguire!
+      </div>
     </div>
   </div>
 </template>

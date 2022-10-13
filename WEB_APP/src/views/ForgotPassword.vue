@@ -7,16 +7,16 @@ const authservices = AuthServices();
 
 const email = ref("");
 const removeform = ref(false);
-const obj_prop = ref({});
+const objforgot = ref({});
 
 function forgotPassword() {
   const payload = {
     email: email.value,
   };
   authservices.forgotPassword(payload).then(() => {
-    obj_prop.value = {
-      status: authservices.status_forgotpassword,
-      body: authservices.response_forgotpassword,
+    objforgot.value = {
+      status: authservices.statusForgotpassword,
+      body: authservices.responseForgotpassword,
     };
     removeform.value = true;
   });
@@ -28,7 +28,7 @@ function forgotPassword() {
       ><img src="../assets/logo1.jpg" class="rounded mx-auto d-block pe-auto"
     /></router-link>
   </div>
-  <ResponseResetPassword :activeResponse="obj_prop" v-if="removeform" />
+  <ResponseResetPassword :activeResponse="objforgot" v-if="removeform" />
   <div class="container">
     <form class="login" v-if="!removeform">
       <div class="container mt-5">

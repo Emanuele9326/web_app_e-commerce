@@ -1,6 +1,7 @@
 <script setup>
 import { useRoute, useRouter } from "vue-router";
-import { storeProduct } from "../stores/StoreProduct.js";
+import { useProcesData } from "../stores/ProcessedData";
+
 import { AuthServices } from "../stores/AuthService";
 import NavBar from "../components/NavBar.vue";
 import GlobalFooter from "../components/GlobalFooter.vue";
@@ -9,16 +10,17 @@ const route = useRoute();
 const router = useRouter();
 let id = route.params.id;
 let category = route.params.category;
+let idCategory = route.params.id_category;
 
-const productStore = storeProduct();
-productStore.productDetails(id);
-const detail = productStore.detailproduct;
+const procesData = useProcesData();
+procesData.productDetails(id);
+const detail = procesData.detailProduct;
 
-function addCart(id) {
-  let user_login = AuthServices().user_login;
+function addCart(productid) {
+  let userLogin = AuthServices().userLogin;
 
-  if (user_login) {
-    productStore.addToCart(id);
+  if (userLogin) {
+    procesData.addToCart(productid);
   } else {
     router.push("/login");
   }
@@ -31,7 +33,10 @@ function addCart(id) {
     <div class="tipcategory">
       <h4 class="ms-3 fs-1 fw-bold">{{ category }}</h4>
       <p class="ms-3 pb-2 fs-5 fw-bold">
-        Home ><router-link :to="'/productlist/' + category">{{ category }}</router-link>
+        Home >
+        <router-link :to="'/productslist/' + idCategory + '/' + category">
+          {{ category }}
+        </router-link>
       </p>
     </div>
     <div class="container description">
@@ -54,7 +59,11 @@ function addCart(id) {
             </div>
 
             <div class="col-12 d-grid gap-2 col-6">
-              <button type="button" class="btn addcart my-3" @click="addCart(id)">
+              <button
+                type="button"
+                class="btn addcart my-3"
+                @click="addCart(id)"
+              >
                 <h5>Aggiungi al Carrello</h5>
               </button>
             </div>
@@ -66,7 +75,9 @@ function addCart(id) {
       <div class="fw-bold">Informazioni Aggiuntive</div>
       <div class="row row-cols-2 rowinf">
         <div class="col-4 browinf">Peso</div>
-        <div class="col-8">{{ detail.quantity }} {{ detail.unit_of_measure }}</div>
+        <div class="col-8">
+          {{ detail.quantity }} {{ detail.unit_of_measure }}
+        </div>
 
         <div class="col-4 browinf">Produzione</div>
         <div class="col-8">Artigianale</div>
@@ -105,9 +116,6 @@ function addCart(id) {
     .addcart h5 {
       margin: 0;
       font-size: 16px;
-    }
-    .btn:hover {
-      color: #fff$My-Color-Theme-2-1-rgba !important ;
     }
     .btn-check:focus + .btn,
     .btn:focus {

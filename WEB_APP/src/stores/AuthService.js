@@ -4,60 +4,48 @@ import { ref } from "vue";
 import instanceAxios from "../http/instanceAxios";
 
 export const AuthServices = defineStore({
-    id: "AuthServices",
+    id: "authServices",
     state: () => ({
-        user_id: ref(""),
+        userId: ref(""),
 
-        //user_login = true if the user is authenticated, otherwise it is false;
-        user_login: ref(false),
+        //userLogin = true if the user is authenticated, otherwise it is false;
+        userLogin: ref(false),
 
         //registration status;
-        status_register: ref(""),
-        message_error_register: ref(""),
+        statusRegister: ref(""),
+        messageErrorRegister: ref(""),
 
         //Login status;
-        status_login: ref(""),
-        login_error: ref(""),
+        statuslogin: ref(""),
+        loginerror: ref(""),
 
-        status_forgotpassword: ref(""),
-        response_forgotpassword: ref(""),
+        statusForgotpassword: ref(""),
+        responseForgotpassword: ref(""),
 
-        status_resetpassword: ref(""),
-        response_resetpassword: ref(""),
+        statusResetpassword: ref(""),
+        responseResetpassword: ref(""),
     }),
 
     actions: {
-        async userCart(payload) {
-            try {
-                await http.axiosInstance
-                    .post("/api/usercart", payload)
-                    .then((response) => {
-                        return response;
-                    });
-            } catch (error) {
-                console.error(error);
-            }
-        },
-
         async registerUser(payload) {
             try {
                 await http.axiosInstance.get("/sanctum/csrf-cookie");
                 await http.axiosInstance.post("/register", payload).then((response) => {
-                    this.status_register = response.status;
-                    this.status_login = 200;
+                    this.statusRegister = response.status;
+                    this.statuslogin = 200;
                 });
             } catch (error) {
-                this.status_register = error.response.status;
-                this.message_error_register = error.response.data.message;
+                this.statusRegister = error.response.status;
+                this.messageErrorRegister = error.response.data.message;
             }
         },
 
         async getUseridRegister(user_email) {
             try {
                 await http.axiosInstance
-                    .get("/api/userid/" + user_email)
+                    .get("/api/users/" + user_email)
                     .then((response) => {
-                        this.user_id = response.data[0].id;
+                        this.userId = response.data[0].id;
                     });
             } catch (error) {
                 console.error(error);
@@ -69,33 +57,49 @@ export const AuthServices = defineStore({
                 //initialize CSRF protection for the application;
                 await http.axiosInstance.get("/sanctum/csrf-cookie");
                 await http.axiosInstance.post("/login", payload).then((response) => {
-                    this.status_login = response.status;
-                    this.user_id = response.data.user_id;
+                    this.statuslogin = response.status;
+                    this.userId = response.data.user_id;
 
                     if (response.data["already_auth"]) {
                         console.log("utente già autenticato");
                     } else {
-                        this.user_login = true;
+                        this.userLogin = true;
                     }
                 });
             } catch (error) {
-                this.status_login = error.response.status;
-                this.login_error = error.response.data.message;
+                this.statuslogin = error.response.status;
+                this.loginerror = error.response.data.message;
             }
         },
 
         async logout() {
             try {
                 await http.axiosInstance.post("/logout").then(() => {
-                    this.user_login = false;
-                    this.user_id = "";
-
-                    if (this.status_login !== "") {
-                        this.status_login = "";
+                    this.userLogin = false;
+                    this.userId = "";
+                    if (this.statuslogin !== "") {
+                        this.statuslogin = "";
                     }
-
-                    if (this.status_register.value !== "") {
-                        this.status_register = "";
+                    if (this.statusRegister !== "") {
+                        this.statusRegister = "";
+                    }
+                    if (this.messageErrorRegister !== "") {
+                        this.messageErrorRegister = "";
+                    }
+                    if (this.loginerror !== "") {
+                        this.loginerror = "";
+                    }
+                    if (this.statusForgotpassword !== "") {
+                        this.statusForgotpassword = "";
+                    }
+                    if (this.responseForgotpassword !== "") {
+                        this.responseForgotpassword = "";
+                    }
+                    if (this.statusResetpassword !== "") {
+                        this.statusResetpassword = "";
+                    }
+                    if (this.responseResetpassword !== "") {
+                        this.responseResetpassword = "";
                     }
                 });
             } catch (error) {
@@ -108,18 +112,16 @@ export const AuthServices = defineStore({
             try {
                 await http.axiosInstance.get("/sanctum/csrf-cookie");
 
-                await http.axiosInstance.get("/api/authUser").then((response) => {
-                    console.log('status_login:' + response.status);
+                await http.axiosInstance.get("/api/users").then((response) => {
+                    console.log("statuslogin:" + response.status);
                 });
             } catch (error) {
                 if (error.response.status == 401) {
                     console.log("error Unauthorized:" + error.response.status);
-                    this.user_login = false;
-                    this.user_id = "";
-                    this.status_login = error.response.status
-
+                    this.userLogin = false;
+                    this.userId = "";
+                    this.statuslogin = error.response.status;
                 }
-
             }
         },
 
@@ -129,13 +131,13 @@ export const AuthServices = defineStore({
                 await instanceAxios.axiosInstance
                     .post("/forgot-password", payload)
                     .then((response) => {
-                        this.status_forgotpassword = response.status;
-                        this.response_forgotpassword = response.body;
+                        this.statusForgotpassword = response.status;
+                        this.responseForgotpassword = response.body;
                         return response;
                     });
             } catch (error) {
-                this.response_forgotpassword = error.response.data.message;
-                this.status_forgotpassword = error.response.status;
+                this.responseForgotpassword = error.response.data.message;
+                this.statusForgotpassword = error.response.status;
             }
         },
         async resetPassword(payload) {
@@ -144,16 +146,15 @@ export const AuthServices = defineStore({
                 await instanceAxios.axiosInstance
                     .post("/reset-password", payload)
                     .then((response) => {
-                        this.status_resetpassword = response.status;
+                        this.statusResetpassword = response.status;
                         return { status: response.status, body: response.body };
                     });
             } catch (error) {
-                this.status_resetpassword = error.response.status;
-                this.response_resetpassword = error.response.data.message;
+                this.statusResetpassword = error.response.status;
+                this.responseResetpassword = error.response.data.message;
                 return error.response.data.message;
             }
         },
     },
-
     persist: true,
 });

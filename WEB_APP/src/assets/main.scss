@@ -8,16 +8,35 @@
 }
 
 @function cart_font_size_3() {
-    $font-size: calc(0.9em + .5vw);
+    $font-size: calc(0.9em + 0.5vw);
     @return $font-size;
 }
 
 @function cart_font_size_4() {
-    $font-size: calc(0.8em + .4vw);
+    $font-size: calc(0.8em + 0.4vw);
     @return $font-size;
 }
 
 @function cart_font_size_6() {
-    $font-size: calc(0.7em + .3vw);
+    $font-size: calc(0.7em + 0.3vw);
     @return $font-size;
+}
+
+
+/*** class ***/
+
+.font-size-1 {
+    font-size: cart_font_size_1();
+}
+
+.font-size-3 {
+    font-size: cart_font_size_3();
+}
+
+.font-size-4 {
+    font-size: cart_font_size_4();
+}
+
+.font-size-6 {
+    font-size: cart_font_size_6();
 }

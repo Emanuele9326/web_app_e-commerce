@@ -1,27 +1,24 @@
 <script setup>
 import { RouterView } from "vue-router";
 import { AuthServices } from "./stores/AuthService";
-import { storeProduct } from "./stores/StoreProduct";
+import { useStoreProduct } from "./stores/StoreProduct";
 import { useRouter } from "vue-router";
 
 const auth_services = AuthServices();
-const productStore = storeProduct();
+const productStore = useStoreProduct();
 const router = useRouter();
 //check if the user authentication is valid;
-if (auth_services.user_login) {
+if (auth_services.userLogin) {
   auth_services.checkLoginUser().then(() => {
-    if (auth_services.status_login == '401') {
-      
-      auth_services.status_login="";
-      auth_services.status_register="";
-      
-      productStore.user_login = false;
-      productStore.user_id = "";
+    if (auth_services.statuslogin == "401") {
+      auth_services.statuslogin = "";
+      auth_services.statusRegister = "";
+
+      productStore.userLogin = false;
+      productStore.userId = "";
       productStore.cartItems = [];
 
-
       router.go();
-
     }
   });
 }
@@ -79,9 +76,7 @@ if (auth_services.user_login) {
       background-color: transparent;
       cursor: pointer;
     }
-    .btn:hover {
-      color: $My-Color-Theme-2-hex !important ;
-    }
+
   }
   @media (min-width: 300px) {
     .nav_icon {

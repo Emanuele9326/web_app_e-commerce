@@ -1,24 +1,21 @@
 <script setup>
-import { storeProduct } from "../stores/StoreProduct.js";
+import { useStoreProduct } from "../stores/StoreProduct.js";
+import { useProcesData } from "../stores/ProcessedData";
 import { AuthServices } from "../stores/AuthService";
 import { useRouter } from "vue-router";
 
-const productStore = storeProduct();
-const auth_services = AuthServices();
+const productStore = useStoreProduct();
+const procesData = useProcesData();
+const authServices = AuthServices();
 
 const router = useRouter();
 
 //user login logout;
-let login_logout = auth_services.user_login;
+let loginLogout = authServices.userLogin;
 
 function Logouth() {
-  auth_services.logout().then(() => {
-    auth_services.user_id = "";
-    auth_services.user_login = false;
-    productStore.user_id = "";
-    productStore.user_login = false;
+  authServices.logout().then(() => {
     productStore.cartItems.splice(0, productStore.cartItems.length);
-
     router.go();
   });
 }
@@ -29,8 +26,12 @@ function Logouth() {
     <div class="container-fluid px-0 intro_navbar">
       <div class="logo ms-sm-3">
         <router-link to="/">
-          <img class="w-100 img_logo align-middle m" src="../assets/logo1.jpg" alt=""
-        /></router-link>
+          <img
+            class="w-100 img_logo align-middle m"
+            src="../assets/logo1.jpg"
+            alt=""
+          />
+        </router-link>
       </div>
 
       <button
@@ -58,75 +59,75 @@ function Logouth() {
           ></button>
         </div>
         <ul class="offcanvas-body mb-lg-0 p-0 mr-2 list_nav">
-          <li class="nav-item my-2 fs-5" v-if="!login_logout">
-            <router-link to="/login" class="nav-link p-0">
+          <li class="nav-item my-2 fs-5" v-if="!loginLogout">
+            <div class="row p-0 position-relative">
+              <div class="col-2 col-sm log_in_outh">
+                <img src="../assets/icon/user.svg" class="icon" />
+              </div>
+              <div class="col-3 col-sm text-navbar">
+                <router-link to="/login" class="stretched-link nav-link"
+                  ><h4>Accedi</h4>
+                </router-link>
+              </div>
+              <div class="col-6 chevron-right">
+                <img src="../assets/icon/chevron-right.svg" class="icon" />
+              </div>
+            </div>
+          </li>
+          <li class="nav-item my-2 fs-5" v-else>
+            <div @click="Logouth()" class="nav-link p-0">
               <div class="row">
                 <div class="col-2 col-sm log_in_outh">
                   <img src="../assets/icon/user.svg" class="icon" />
                 </div>
-                <div class="col-3 col-sm text-navbar"><h4 class="">Accedi</h4></div>
+                <div class="col-3 col-sm text-navbar">
+                  <h4 class="">Esci</h4>
+                </div>
                 <div class="col-6 chevron-right">
                   <img src="../assets/icon/chevron-right.svg" class="icon" />
-                </div>
-              </div>
-            </router-link>
-          </li>
-          <li class="nav-item my-2 fs-5" v-else>
-            <div>
-              <div @click="Logouth()" class="nav-link p-0">
-                <div class="row">
-                  <div class="col-2 col-sm log_in_outh">
-                    <img src="../assets/icon/user.svg" class="icon" />
-                  </div>
-                  <div class="col-3 col-sm text-navbar"><h4 class="">Esci</h4></div>
-                  <div class="col-6 chevron-right">
-                    <img src="../assets/icon/chevron-right.svg" class="icon" />
-                  </div>
                 </div>
               </div>
             </div>
           </li>
 
           <li class="nav-item my-2 fs-5">
-            <div>
-              <router-link to="/cartProduct" class="nav-link active p-0">
-                <div class="row">
-                  <div class="col-2 col-sm log_in_outh">
-                    <!---->
-                    <i style="font-size: 24px">
-                      <img class="icon" src="../assets/icon/basket.svg" />
-                    </i>
-                    <span
-                      v-if="productStore.quantityProducts > 0"
-                      class="badge badge-warning"
-                      id="lblCartCount"
-                    >
-                      {{ productStore.quantityProducts }}
-                    </span>
-                    <!----->
-                  </div>
-                  <div class="col-3 col-sm text-navbar"><h4>Carrello</h4></div>
-                  <div class="col-6 chevron-right">
-                    <img src="../assets/icon/chevron-right.svg" class="icon" />
-                  </div>
-                </div>
-              </router-link>
+            <div class="row p-0 position-relative">
+              <div class="col-2 col-sm log_in_outh">
+                <i style="font-size: 24px">
+                  <img class="icon" src="../assets/icon/basket.svg" />
+                </i>
+                <span
+                  v-if="procesData.quantityProducts > 0"
+                  class="badge badge-warning"
+                  id="lblCartCount"
+                >
+                  {{ procesData.quantityProducts }}
+                </span>
+              </div>
+              <div class="col-3 col-sm text-navbar">
+                <router-link to="/cartProduct" class="nav-link stretched-link">
+                  <h4>Carrello</h4>
+                </router-link>
+              </div>
+              <div class="col-6 chevron-right">
+                <img src="../assets/icon/chevron-right.svg" class="icon" />
+              </div>
             </div>
           </li>
           <li class="nav-item my-2 fs-5">
-            <a class="nav-link active p-0">
-              <router-link to="/search" class="nav-link p-0">
-                <div class="row">
-                  <div class="col-2 col-sm log_in_outh">
-                    <img src="../assets/icon/search.svg" class="icon" />
-                  </div>
-                  <div class="col-3 col-sm text-navbar"><h4>Search</h4></div>
-                  <div class="col-6 chevron-right">
-                    <img src="../assets/icon/chevron-right.svg" class="icon" />
-                  </div>
-                </div>
-              </router-link>
-            </a>
+            <div class="row p-0 position-relative">
+              <div class="col-2 col-sm log_in_outh">
+                <img src="../assets/icon/search.svg" class="icon" />
+              </div>
+              <div class="col-3 col-sm text-navbar">
+                <router-link to="/search" class="nav-link stretched-link">
+                  <h4>Search</h4>
+                </router-link>
+              </div>
+              <div class="col-6 chevron-right">
+                <img src="../assets/icon/chevron-right.svg" class="icon" />
+              </div>
+            </div>
           </li>
         </ul>
       </div>
@@ -147,10 +148,13 @@ function Logouth() {
   height: auto;
   margin: auto;
 }
+.img_logo {
+  align-items: center;
+  vertical-align: middle;
+}
 .sandwich_menu {
   width: 50px;
 }
-
 ul {
   list-style: none;
   li {
@@ -181,7 +185,6 @@ span {
 .badge-warning {
   background-color: $My-Color-Theme-3-hex;
 }
-
 #offcanvasMenu {
   ul {
     li {
@@ -189,11 +192,9 @@ span {
     }
   }
 }
-
 @media (max-width: 389px) {
   .intro_navbar {
     display: block;
-
     .logo {
       margin: auto;
     }
@@ -223,7 +224,6 @@ span {
   }
   .chevron-right {
     display: inline-block;
-
     text-align: end;
   }
   .icon {
@@ -234,7 +234,6 @@ span {
   .navbar-expand-lg .offcanvas-body {
     justify-content: end;
   }
-
   #offcanvasMenu {
     ul {
       li {
@@ -247,11 +246,9 @@ span {
     height: 35px;
     margin: 0.7rem 0rem;
   }
-
   .text-navbar {
     margin: 1rem 0rem;
     padding: 0rem 1rem;
-
     font-size: medium;
   }
   .log_in_outh {

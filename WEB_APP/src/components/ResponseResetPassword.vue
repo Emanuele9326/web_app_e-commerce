@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-//props
+
 const props = defineProps(["activeResponse"]);
 const active = ref(true);
 
@@ -10,7 +10,9 @@ if (props.activeResponse.status !== 200) {
 </script>
 <template>
   <div class="text-center" v-if="active">
-    <p class="st200">The password reset request for your account was successful!</p>
+    <p class="st200">
+      The password reset request for your account was successful!
+    </p>
   </div>
   <div v-else class="error">
     <h5>Errore: {{ props.activeResponse.status }}</h5>

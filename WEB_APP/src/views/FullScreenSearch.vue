@@ -1,17 +1,18 @@
 <script setup>
 import { useRouter } from "vue-router";
-import { storeProduct } from "../stores/StoreProduct";
+import { useStoreProduct } from "../stores/StoreProduct";
 import instanceAxios from "../http/instanceAxios";
 import { ref } from "vue";
 
 const router = useRouter();
 
-const productStore = storeProduct();
-const products = ref([]);
+const productStore = useStoreProduct();
+const category = productStore.categories;
 
+const products = ref([]);
 const resultsearch = ref([]);
 const input = ref("");
-const input_category = ref("");
+const idCategory = ref("");
 
 function closeSearch() {
   router.back();
@@ -20,13 +21,13 @@ function closeSearch() {
 async function searchProduct(category) {
   document.getElementById("product").removeAttribute("disabled");
 
-  let cat = category.toLowerCase();
-
   productStore.getProducts(category);
 
-  await instanceAxios.axiosInstance.get("/api/listproduct/" + cat).then((response) => {
-    products.value = response.data;
-  });
+  await instanceAxios.axiosInstance
+    .get("api/categories/" + category + "/products")
+    .then((response) => {
+      products.value = response.data;
+    });
 }
 
 function filteredList(input) {
@@ -36,19 +37,31 @@ function filteredList(input) {
   resultsearch.value = results;
 }
 
-function detailProduct(category, id_product) {
-  productStore.getCategories(category);
-  router.push({ name: "ProductView", params: { category: category, id: id_product } });
+function detailProduct(idcategory, idproduct) {
+  router.push({
+    name: "ProductView",
+    params: {
+      id_category: idcategory,
+      category: category[idcategory],
+      id: idproduct,
+    },
+  });
 }
 </script>
 
 <template>
   <div id="myOverlay" class="overlay overflow-auto">
-    <div class="header_search">
-      <span class="logo"
-        ><img src="../assets/logo1.jpg" class="rounded mx-auto d-block"
-      /></span>
-      <span class="closebtn" @click="closeSearch()" title="Close Overlay">×</span>
+    <div class="row m-0 header_search">
+      <div class="col ms-2 logo p-0">
+        <img src="../assets/logo1.jpg" class="logo_img rounded d-block" />
+      </div>
+      <div
+        class="col p-0 closebtn"
+        @click="closeSearch()"
+        title="Close Overlay"
+      >
+        <span class="m-auto">X</span>
+      </div>
     </div>
 
     <div class="overlay-content">
@@ -58,14 +71,18 @@ function detailProduct(category, id_product) {
             <select
               class="form-select category"
               aria-label="Default select example"
-              v-model="input_category"
-              @change="searchProduct(input_category)"
+              v-model="idCategory"
+              @change="searchProduct(idCategory)"
             >
               <option disabled value="">Seleziona una categoria</option>
-              <option>Pasta</option>
-              <option>Vini</option>
-              <option>Confetture</option>
-              <option>Biscotti</option>
+
+              <option
+                v-for="(cat, index) in category"
+                :key="index"
+                :value="index"
+              >
+                {{ cat }}
+              </option>
             </select>
           </div>
           <div class="col-12 mt-3">
@@ -94,7 +111,10 @@ function detailProduct(category, id_product) {
           <div class="col col-sm-9 p-0">
             <div class="row row_name m-0 mt-5">
               <div class="col p-0">
-                <div @click="detailProduct(input_category, item.id)">
+                <div
+                  @click="detailProduct(idCategory, item.id)"
+                  class="name_item"
+                >
                   {{ item.name }}
                 </div>
               </div>
@@ -113,9 +133,17 @@ function detailProduct(category, id_product) {
   background: $My-Color-Theme-2-v2-rgba;
 
   .header_search {
-    display: block;
     width: 100%;
     background-color: #fff;
+  }
+  .logo {
+    text-align: start;
+  }
+
+  .logo_img {
+    width: 285px;
+    height: auto;
+    margin: 0px;
   }
   .overlay-content {
     display: block;
@@ -137,11 +165,10 @@ function detailProduct(category, id_product) {
   }
 
   .closebtn {
-    position: absolute;
-    top: -10px;
-    right: 20px;
-    font-size: 60px;
+    margin-right: 1.5rem;
+    font-size: 3rem;
     cursor: pointer;
+    text-align: end;
     color: $My-Color-Theme-1-hex;
   }
 
@@ -174,6 +201,10 @@ function detailProduct(category, id_product) {
 
   #myOverlay .row_name {
     margin-top: 2rem !important;
+    cursor: pointer;
+  }
+  .name_item {
+    cursor: pointer;
   }
 
   .result a {

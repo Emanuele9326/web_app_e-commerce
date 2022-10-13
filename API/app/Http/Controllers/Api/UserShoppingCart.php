@@ -8,31 +8,31 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 
+
 class UserShoppingCart extends Controller
 {
-
     /**
-     * get Id user.
+     * Get Id user.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    function getUserid($user_email)
+    function getUserid(Request  $request, $user_email)
     {
         return User::where('users.email', $user_email)
             ->select('id', 'name')->get();
     }
-
     /**
      * For the authenticated user, it goes to read the products in the cart_items table if present;
      * 
      * 
      */
 
-    function getCartItems($user_id)
+    function getCartItems(Request $request)
     {
+
+
         $item = CartItem::join('products',  'cart_items.product_id', '=', 'products.id')
-            ->where('cart_items.user_id', $user_id)
             ->select(
                 'products.id',
                 'cart_items.product_code',
@@ -43,6 +43,8 @@ class UserShoppingCart extends Controller
                 'products.image',
                 'cart_items.updated_at',
             )->get();
+
+
         return $item;
     }
 
@@ -78,19 +80,17 @@ class UserShoppingCart extends Controller
      */
 
 
-    function removeCartitem(Request $request)
+    function removeCartitem(Request $request, $id)
     {
 
-        $user_cart_id = $request->user_cart_id;
-        $product_code = $request->product_code;
+        $code_product = $id;
 
-        CartItem::where('user_id', $user_cart_id)
-            ->where('product_code', $product_code)
-            ->delete();
+        CartItem::where('product_code', $code_product)->delete();
 
         return  response()->json([
             'status' => 'ok',
-            "product_code" => $product_code
+            "product_code" => $code_product,
+
         ]);
     }
 }

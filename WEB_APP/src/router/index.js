@@ -3,11 +3,11 @@ import { AuthServices } from "../stores/AuthService";
 import ProductList from "../views/ProductList.vue";
 import ProductView from "../views/ProductView.vue";
 import CartProduct from "../views/CartProduct.vue";
-import FullScreen_Search from "../views/FullScreen_Search.vue";
+import FullScreenSearch from "../views/FullScreenSearch.vue";
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 
-import RegisterForm from "../views/RegisterForm.vue";
+import RegisterUser from "../views/RegisterUser.vue";
 
 import ForgotPassword from "../views/ForgotPassword.vue";
 import ResetPassword from "../views/ResetPassword.vue";
@@ -24,15 +24,15 @@ const router = createRouter({
             },
         },
         {
-            path: "/productlist/:category",
-            name: "ProductList",
+            path: "/productslist/:id_category/:category",
+            name: "ProductsList",
             component: ProductList,
             meta: {
                 requiresAuth: false,
             },
         },
         {
-            path: "/productView/:category/:id",
+            path: "/productView/:id_category/:category/:id",
             name: "ProductView",
             component: ProductView,
             meta: {
@@ -58,8 +58,8 @@ const router = createRouter({
         },
         {
             path: "/register",
-            name: "RegisterForm",
-            component: RegisterForm,
+            name: "RegisterUser",
+            component: RegisterUser,
             meta: {
                 requiresAuth: false,
             },
@@ -82,8 +82,8 @@ const router = createRouter({
         },
         {
             path: "/search",
-            name: "FullScreen_Search",
-            component: FullScreen_Search,
+            name: "FullScreenSearch",
+            component: FullScreenSearch,
             meta: {
                 requiresAuth: false,
             },
@@ -95,7 +95,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     //verifies if the user is authenticated or not;
     //authUser = boolean;
-    const authUser = AuthServices().user_login;
+    const authUser = AuthServices().userLogin;
     //check if the request is authenticated or not;
     const reqAuth = to.matched.some((record) => record.meta.requiresAuth);
     const loginQuery = { path: "/login", query: { redirect: to.fullPath } };
@@ -104,7 +104,7 @@ router.beforeEach((to, from, next) => {
         AuthServices()
             .checkLoginUser()
             .then(() => {
-                if (!AuthServices().user_login) {
+                if (!AuthServices().userLogin) {
                     next(loginQuery.path);
                 } else {
                     next();

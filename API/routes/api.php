@@ -18,24 +18,19 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/category', [CategoriesProduct::class, 'getCategories']);
-Route::get('/listproduct/{category}', [CategoriesProduct::class, 'getProductsList']);
-Route::get('/userid/{id_user}',[UserShoppingCart::class,'getUserid']);
-
+Route::get('/categories', [CategoriesProduct::class, 'getCategories']);
+Route::get('/categories/{id}/products', [CategoriesProduct::class, 'getProductsList']);
+Route::get('/users/{id}', [UserShoppingCart::class, 'getUserid']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
-   
-   
-    Route::post('/addcartitems',[UserShoppingCart::class,'addcartItems']);
-    Route::get('/getcartitems/{user_id}',[UserShoppingCart::class,'getCartItems']);
-    Route::post('/removecartitems',[UserShoppingCart::class,'removeCartitem']);
-    
-    Route::get('/authUser',function(){
-        $user= Auth::user();
+
+
+    Route::post('/cart', [UserShoppingCart::class, 'addcartItems']);
+    Route::get('/cart', [UserShoppingCart::class, 'getCartItems']);
+    Route::delete('/cart/{id}', [UserShoppingCart::class, 'removeCartitem']);
+
+    Route::get('/users', function () {
+        $user = Auth::user();
         return $user;
-
     });
-
-  
-  });
-
+});
