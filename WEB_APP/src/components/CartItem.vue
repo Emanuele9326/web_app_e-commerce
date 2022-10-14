@@ -22,7 +22,7 @@ function totalItem(art) {
 <template>
   <div
     class="row row_item justify-content-center mb-3 mx-0 w-100"
-    v-for="item in cartItem"
+    v-for="item in storeProduct.cartItems"
     :key="item.id"
   >
     <div class="col col-sm-3 img m-auto">
