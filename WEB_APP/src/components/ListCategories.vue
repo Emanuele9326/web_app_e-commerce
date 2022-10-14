@@ -2,12 +2,11 @@
 import { useStoreProduct } from "../stores/StoreProduct";
 
 const storeProduct = useStoreProduct();
-const categories = storeProduct.categories;
 </script>
 <template>
   <div
     class="col-12 col-sm-5 m-2 p-3"
-    v-for="(category, index) in categories"
+    v-for="(category, index) in storeProduct.categories"
     :key="index"
   >
     <div class="card bg-dark position-relative" style="border: none">
