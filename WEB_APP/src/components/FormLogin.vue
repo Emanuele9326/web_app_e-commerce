@@ -160,7 +160,7 @@ function passwordShowhide() {
         <button class="btn btn-primary" type="submit">LOGIN</button>
       </div>
 
-      <!-- Register buttons -->
+      <!-- Register button -->
       <div class="text-center">
         <p>
           Non sei registrato?

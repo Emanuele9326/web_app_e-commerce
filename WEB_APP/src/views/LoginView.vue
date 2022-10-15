@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from "vue";
-
 import { AuthServices } from "../stores/AuthService";
 import { useStoreProduct } from "../stores/StoreProduct.js";
 import { useRouter } from "vue-router";

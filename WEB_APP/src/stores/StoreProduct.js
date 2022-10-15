@@ -31,9 +31,9 @@ export const useStoreProduct = defineStore({
             }
         },
         //products by category;
-        async getProducts(idCategory) {
+        async getProducts(id_category) {
             await instanceAxios.axiosInstance
-                .get("/api/categories/" + idCategory + "/products")
+                .get("/api/categories/" + id_category + "/products")
                 .then((response) => {
                     this.products = response.data;
                     useProcesData().singleBlock(0);
@@ -79,9 +79,9 @@ export const useStoreProduct = defineStore({
         },
 
         //removes products from the cart;
-        async removeCartItems(idProduct) {
+        async removeCartItems(id_product) {
             try {
-                await instanceAxios.axiosInstance.delete("/api/cart/" + idProduct);
+                await instanceAxios.axiosInstance.delete("/api/cart/" + id_product);
             } catch (error) {
                 console.error(error);
             }

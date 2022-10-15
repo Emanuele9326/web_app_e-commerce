@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { useStoreProduct } from "./StoreProduct";
 
 export const useProcesData = defineStore({
-    id: "processedData",
+    id: "procesData",
     state: () => ({
         productsBlock: ref([]),
         detailProduct: ref({}),
@@ -35,18 +35,18 @@ export const useProcesData = defineStore({
         },
         divisionBlock: () => {
             const storeProduct = useStoreProduct();
-            //items for chunk;
-            const forChunk = 6;
+            //items for block;
+            const itemsforBlock = 6;
             if (storeProduct.products.length > 6) {
                 const result = storeProduct.products.reduce(
                     (resultArray, item, index) => {
-                        const chunkIndex = Math.floor(index / forChunk);
+                        const blockIndex = Math.floor(index / itemsforBlock);
 
-                        if (!resultArray[chunkIndex]) {
-                            // start a new chunk;
-                            resultArray[chunkIndex] = [];
+                        if (!resultArray[blockIndex]) {
+                            // start a new block;
+                            resultArray[blockIndex] = [];
                         }
-                        resultArray[chunkIndex].push(item);
+                        resultArray[blockIndex].push(item);
 
                         return resultArray;
                     }, []
@@ -63,9 +63,9 @@ export const useProcesData = defineStore({
             this.productsBlock = this.divisionBlock[id];
         },
 
-        productDetails(Id) {
+        productDetails(id_product) {
             useStoreProduct().products.forEach((element) => {
-                if (element.id == Id) {
+                if (element.id == id_product) {
                     this.detailProduct = element;
                 }
             });
@@ -89,7 +89,7 @@ export const useProcesData = defineStore({
             if (cartProduct) {
                 cartProduct.quantity++;
             } else {
-                const add_product = {
+                const addProduct = {
                     id: this.detailProduct.id,
                     product_code: this.uniqueCode(),
                     name: this.detailProduct.name,
@@ -97,7 +97,7 @@ export const useProcesData = defineStore({
                     price: this.detailProduct.price,
                     quantity: 1,
                 };
-                storeProduct.cartItems.push(add_product);
+                storeProduct.cartItems.push(addProduct);
             }
 
             storeProduct.updateTableCartitems();

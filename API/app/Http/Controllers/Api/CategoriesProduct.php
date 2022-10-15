@@ -24,14 +24,14 @@ class CategoriesProduct extends Controller
 
    /**
     * List of products by category
-    * @param  \Illuminate\Http\Request  $request
+    * @param  int $id
     * @return \Illuminate\Http\Response
     * 
     */
 
-   function getProductsList(Request $request, $id_category)
+   function getProductsList($id)
    {
-      $list = ProductCategory::find($id_category)->products()->get();
+      $list = ProductCategory::find($id)->products()->get();
       return $list;
    }
 }

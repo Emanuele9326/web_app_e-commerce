@@ -1,7 +1,7 @@
 <script setup>
+import instanceAxios from "../http/instanceAxios";
 import { useRouter } from "vue-router";
 import { useStoreProduct } from "../stores/StoreProduct";
-import instanceAxios from "../http/instanceAxios";
 import { ref } from "vue";
 
 const router = useRouter();

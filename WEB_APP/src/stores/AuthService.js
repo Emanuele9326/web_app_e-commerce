@@ -39,7 +39,7 @@ export const AuthServices = defineStore({
                 this.messageErrorRegister = error.response.data.message;
             }
         },
-
+        //retrieve user "id" after registration;
         async getUseridRegister(user_email) {
             try {
                 await http.axiosInstance
