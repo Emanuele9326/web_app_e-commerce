@@ -132,7 +132,7 @@ export const AuthServices = defineStore({
                     .post("/forgot-password", payload)
                     .then((response) => {
                         this.statusForgotpassword = response.status;
-                        this.responseForgotpassword = response.body;
+                        this.responseForgotpassword = response.data.message;
                         return response;
                     });
             } catch (error) {
