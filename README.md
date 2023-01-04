@@ -23,7 +23,7 @@
 
 ## Informazioni sul progetto
  
- Ho ipotizzato che un supermarket "L'Angolo della Bontà"  vuole aprire un piccolo e-commerce totalmente mobile. Per sperimentare questa nuova possibilità di business chiede di sviluppare una  web app dall’esperienza minimale.
+Ho ipotizzato che un supermarket "L'Angolo della Bontà"  vuole aprire un piccolo e-commerce totalmente mobile. Per sperimentare questa nuova possibilità di business chiede di sviluppare una  web app dall’esperienza minimale.
 
 Questa Web app effettua delle chiamata ad un'API RESTful da mè sviluppata. L'API oltre a gestire il sistema di autenticazione , gestisce  il recupero dal Database dei prodotti dell'e-commerce per categoria, e il recupero di eventuali prodotti che l'utente loggato presenta in carrello.
 
